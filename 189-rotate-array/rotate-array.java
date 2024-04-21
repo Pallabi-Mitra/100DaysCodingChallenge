@@ -1,7 +1,48 @@
 class Solution {
     public void rotate(int[] nums, int k) {
         
-        
+
+
+        int i;
+        int arr[]=new int[nums.length];
+
+        for(i =0;i<nums.length;i++)
+        {
+            arr[(i+k)%nums.length]=nums[i];  // 7%7==0
+        }
+ for(i=0;i<nums.length;i++)
+        {
+            nums[i]=arr[i];
+        }
+    }
+}
+        // Optimal Solution : Striver: works for odd number
+
+/*
+
+  int n = nums.length;
+  // Function to Rotate k elements to left
+  //public static void Rotateeletoleft(int[] arr, int n, int k) {
+    // Reverse first k elements
+    Reverse(nums, 0, k);
+    // Reverse last n-k elements
+    Reverse(nums, k+1 , n - 1);
+    // Reverse whole array
+    Reverse(nums, 0, n - 1);
+  
+    }
+    public void Reverse(int[] arr, int start, int end) {
+    while (start <= end) {
+      int temp = arr[start];
+      arr[start] = arr[end];
+      arr[end] = temp;
+      start++;
+      end--;
+    }
+  }
+}
+*/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
           //  Brute Force Solution : LEFT ROTATE 
           /*
@@ -29,7 +70,7 @@ class Solution {
 
 
 // Brute Force : RIGHT ROTATE
-
+/*
         int n = nums.length;
         k = k%n;
         int i;
@@ -56,7 +97,7 @@ class Solution {
         }
 
 
-
+*/
 
 
 
@@ -108,7 +149,7 @@ class Solution {
 */
        // nums=arr;
 
-       // Optimal Solution : 
+       // Optimal Solution : Love Babbar
        /*
 int i;
         int arr[]=new int[nums.length];
@@ -123,5 +164,6 @@ int i;
         }
 
 */
-    }
-}
+
+
+
