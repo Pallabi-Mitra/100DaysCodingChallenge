@@ -46,11 +46,13 @@ class Solution {
         {
             nums[i-(n-k)]=nums[i];
         }
-        int j =0;
+      //  int j =0;
         for(i=k;i<n;i++)
         {
-            nums[i]=temp[j];
-            j++;
+          //  nums[i]=temp[j];
+          //  j++;
+
+          nums[i]= temp[i-k];
         }
 
 
