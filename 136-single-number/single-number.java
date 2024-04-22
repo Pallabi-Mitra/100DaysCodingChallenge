@@ -2,10 +2,28 @@ class Solution {
     public int singleNumber(int[] arr) {
 
 
+
+//// XOR : ///////
+
 int n = arr.length;
+int xor =0;
+for(int i =0;i<n;i++)
+{
+    xor = xor ^ arr[i];
+}
+
+return xor ;
+
+    }
+}
+/////////// tc : n LOG n
+/*
+int n = arr.length;
+//int value=0;
 HashMap<Integer, Integer> mpp = new HashMap<>();
         for (int i = 0; i < n; i++) {
-            int value = mpp.getOrDefault(arr[i], 0);
+        
+          int value = mpp.getOrDefault(arr[i], 0);
             mpp.put(arr[i], value + 1);
         }
 
