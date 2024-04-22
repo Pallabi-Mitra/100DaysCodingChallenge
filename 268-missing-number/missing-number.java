@@ -1,8 +1,33 @@
 class Solution {
     public int missingNumber(int[] nums) {
 
-// Optimal Solution : TC : O(N)
 
+// Optimal Solution : XOR
+
+// same ^ same : 0
+// Diff ^ Diff : 1
+
+// 0 ^ 3 = 3
+
+int i;
+int xor1=0;
+int xor2=0;
+
+
+
+for(i=0;i<nums.length;i++)
+{
+    xor2=xor2 ^ nums[i];
+    xor1 = xor1 ^ (i+1);
+}
+
+
+return xor1 ^ xor2;
+
+    }
+}
+// Optimal Solution : TC : O(N) // Sum of N natural nos
+/*
 
 int n = nums.length;
 
@@ -23,7 +48,7 @@ return sub;
 
     }
 }
-
+*/
 
 
 
