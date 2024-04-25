@@ -31,7 +31,7 @@ class Solution {
         }
 
 */
-    
+    /*
                 int n = arr.length;
                 
                int low = 0;
@@ -63,9 +63,47 @@ class Solution {
                        high--;
                     }
                }
-        // Better Approach 
+
+               */
+        // Better Approach :
 
 
+        int count0 = 0;
+        int count1 = 0;
+        int count2= 0;
+
+        int n =arr.length;
+        int i;
+
+        for(i=0;i<n;i++)
+        {
+            if(arr[i]==0)
+            {
+                count0++;
+            }
+            else if (arr[i]==1)
+            {
+                count1++;
+            }
+            else
+            {
+                count2++;
+            }
+        }
+
+        for(i=0;i<count0;i++)
+        {
+            arr[i]=0;
+        }
+
+        for(i=count0;i<count0+count1;i++)
+        {
+            arr[i]=1;
+        }
+        for(i=count1+count0;i<n;i++)
+        {
+            arr[i]=2;
+        }
 
     }
         
