@@ -60,7 +60,7 @@ class Solution {
         return -1;  
 */
         // Better Solution : Hashing : 
-
+/*
 
         int n = nums.length;
         int i ;
@@ -97,5 +97,51 @@ class Solution {
 
         return res;
 
+        */
+
+
+        // Moore's Voting Algorithm : 
+
+        int n = nums.length;
+
+        int i;
+        int count=0;
+        int ele=0; 
+    
+        for(i=0;i<n;i++)
+        {
+         if(count==0)
+            {
+              
+                count=1;
+                ele = nums[i];
+            }
+            else if(nums[i]==ele)
+            {
+                    count++;
+            }
+            else
+            {
+                    count--;
+            }
+
+
+        }
+
+        int count1=0;
+
+        for(i=0;i<n;i++)
+        {
+                if(nums[i]==ele)
+                {
+                    count1++;
+                }
+        }
+
+        if(count1> n/2)
+        {
+            return ele;
+        }
+        return -1;
     }
 }
