@@ -28,7 +28,7 @@ class Solution {
 
 
         // Brute Force : counting
-
+/*
         
        long count;
         
@@ -58,5 +58,44 @@ class Solution {
         }     
 
         return -1;  
+*/
+        // Better Solution : Hashing : 
+
+
+        int n = nums.length;
+        int i ;
+
+        HashMap<Integer,Integer> mpp = new HashMap<>();
+
+        for(i=0;i<n;i++)
+        {
+            int freq=0;
+            int key = nums[i];
+
+            if(mpp.containsKey(key))
+            {
+                freq = mpp.get(key);
+            }
+
+            freq++;
+
+            mpp.put(key,freq);
+        }
+
+      int res=0;
+     for(Map.Entry<Integer,Integer> it : mpp.entrySet())
+     {
+
+       //int res = Math.max(it.getValue());
+
+       if(it.getValue()>n/2)
+       {
+         res = it.getKey();
+       }
+      
+     }
+
+        return res;
+
     }
 }
