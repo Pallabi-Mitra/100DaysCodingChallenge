@@ -20,19 +20,19 @@ for(int i=0;i<n;i++)
 */
 
 
-
-
-
-
  int total = 0, maxSum = nums[0], curMax = 0, minSum = nums[0], curMin = 0;
+
+
        for (int a : nums) {
             curMax = Math.max(curMax + a, a);
             maxSum = Math.max(maxSum, curMax);
+            
 
              total += a;
 
-            curMin = Math.min(curMin + a, a);
+           
             minSum = Math.min(minSum, curMin);
+             curMin = Math.min(curMin + a, a);
            
         }
         return maxSum > 0 ? Math.max(maxSum, total - minSum) : maxSum;
