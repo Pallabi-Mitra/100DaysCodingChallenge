@@ -24,15 +24,16 @@ for(int i=0;i<n;i++)
 
 
        for (int a : nums) {
+
             curMax = Math.max(curMax + a, a);
             maxSum = Math.max(maxSum, curMax);
             
 
              total += a;
 
-           
-            minSum = Math.min(minSum, curMin);
              curMin = Math.min(curMin + a, a);
+             minSum = Math.min(minSum, curMin);
+           
            
         }
         return maxSum > 0 ? Math.max(maxSum, total - minSum) : maxSum;
