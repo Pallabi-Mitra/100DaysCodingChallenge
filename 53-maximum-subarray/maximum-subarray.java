@@ -2,12 +2,22 @@ class Solution {
     public int maxSubArray(int[] nums) {
         
 
+        int total = 0, maxSum = nums[0], curMax = 0, minSum = nums[0], curMin = 0;
+        
+        
+               for (int a : nums) {
+ curMax = Math.max(curMax + a, a);
+                    maxSum = Math.max(maxSum, curMax);
+               }
+               return maxSum;
+
+                    
 
 
 
 // Optimal : O(N): Kadane Algorithm :
 
-
+/*
 int n = nums.length;
 
 int sum = 0;
