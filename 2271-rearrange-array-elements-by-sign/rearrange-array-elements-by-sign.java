@@ -28,12 +28,9 @@ class Solution {
         for(i=0;i<n/2;i++)
         {
             nums[2*i]=pos[i];
+             nums[2*i+1]=neg[i];
         }
 
-        for(i=0;i<n/2;i++)
-        {
-            nums[2*i+1]=neg[i];
-        }
 
 return nums;
         
