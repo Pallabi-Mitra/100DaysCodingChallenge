@@ -1,17 +1,42 @@
 class Solution {
     public int maxSubarraySumCircular(int[] nums) {
 
+/*
+int n = nums.length;
+
+int max_straight_sum = INT_MIN;
+int min_straight_sum= INT_MAX;
+int array_sum=0;
+
+int temp_max_sum=0;
+int temp_min_sum=0;
+
+for(int i=0;i<n;i++)
+{
+    array_sum+=nums[i];
+}
+
+
+*/
+
+
+
+
 
 
  int total = 0, maxSum = nums[0], curMax = 0, minSum = nums[0], curMin = 0;
        for (int a : nums) {
             curMax = Math.max(curMax + a, a);
             maxSum = Math.max(maxSum, curMax);
+
+             total += a;
+
             curMin = Math.min(curMin + a, a);
             minSum = Math.min(minSum, curMin);
-            total += a;
+           
         }
         return maxSum > 0 ? Math.max(maxSum, total - minSum) : maxSum;
+        
     
 /*
         int n = nums.length;
