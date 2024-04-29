@@ -1,7 +1,87 @@
 class Solution {
     public List<Integer> majorityElement(int[] v) {
 
-//Hashing 2 iteration ::
+
+// Optimal Solution : Moore's Voting Algorithm_ for 2 elements : 
+
+
+int n =v.length;
+int ele1=Integer.MIN_VALUE;
+int ele2=Integer.MIN_VALUE;
+int count1=0,count2=0;
+
+for(int i = 0;i<n;i++)
+{
+    if(count1==0 && ele2!=v[i])
+    {
+        count1=1;
+        ele1=v[i];
+    }
+    else if(count2==0 && ele1!=v[i])
+    {
+        count2=1;
+        ele2=v[i];
+    }
+    else if(ele1==v[i])
+    {
+        count1++;
+    }
+    else if(ele2==v[i])
+    {
+        count2++;
+    }
+    else
+    {
+        count1--;
+        count2--;
+    }
+
+}
+
+ArrayList<Integer> al = new ArrayList<>();
+
+count1=0;
+count2=0;
+int mini = (int)(n/3)+1;
+
+for(int i=0;i<n;i++)
+{
+    if(ele1==v[i])
+    {
+        count1++;
+    }
+    if(ele2==v[i])
+    {
+        count2++;
+    }
+
+}
+
+if(count1>=mini)
+{
+    al.add(ele1);
+}
+if(count2>=mini)
+{
+    al.add(ele2);
+}
+
+return al;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//Hashing 2 iteration :: T.C : O(n), SC : O(N)
 /*
 ArrayList<Integer> al = new ArrayList<>();
 
@@ -33,13 +113,15 @@ for(int i=0;i<n;i++)
     }
   }
   return al;
+  }
+  }
 
 */
 
 
 //Hashing 1 iteration :
 
-
+/*
 ArrayList<Integer> al = new ArrayList<>();
 
 HashMap<Integer,Integer> mpp = new HashMap<>();
@@ -61,13 +143,13 @@ for(int i=0;i<n;i++)
     freq++;
     
     mpp.put(key,freq);
-/*
-    if(mpp.get(key)>n/3)
-    {
-        al.add(key);
-    }
-   */  
-   if(mpp.get(v[i])==mini)
+
+   // if(mpp.get(key)>n/3)
+    
+     //   al.add(key); 
+   
+   
+   if(mpp.get(v[i])==mini) // avoids adding same element in list [2,2]
    {
     al.add(v[i]);
    }
@@ -77,8 +159,10 @@ for(int i=0;i<n;i++)
 }
 
 return al;
+    }
+    }
 
-
+*/
 
 
 //Bruteforce :O(n2)
@@ -87,9 +171,6 @@ return al;
   int n = nums.length;
   int count=0;
 
-
-*/
-/*
 int n = v.length; //size of the array
         List<Integer> ls = new ArrayList<>(); // list of answers
 
@@ -115,6 +196,8 @@ int n = v.length; //size of the array
         }
 
         return ls;
+        }
+        }
     
 */
 
@@ -176,6 +259,7 @@ int n = v.length; //size of the array
         }
 
         return al;
+        }
+        }
         */
-    }
-}
+   
