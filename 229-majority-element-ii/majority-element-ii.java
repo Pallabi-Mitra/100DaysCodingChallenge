@@ -1,20 +1,56 @@
 class Solution {
     public List<Integer> majorityElement(int[] v) {
 
+//Hashing 2 iteration ::
 
-//Bruteforce :
+ArrayList<Integer> al = new ArrayList<>();
+
+HashMap<Integer,Integer> mpp = new HashMap<>();
+
+int n = v.length;
+
+for(int i=0;i<n;i++)
+  {
+    int freq=1;
+    if(mpp.containsKey(v[i]))
+    {
+        int rem=mpp.get(v[i]);
+        rem++;
+        mpp.put(v[i],rem);
+      
+    }
+    else
+    {
+        mpp.put(v[i],freq);
+    }
+  }
+
+  for(Map.Entry<Integer,Integer> it : mpp.entrySet())
+  {
+    if(it.getValue()>n/3)
+    {
+        al.add(it.getKey());
+    }
+  }
+  return al;
+
+
+
+
+
+
+
+
+
+//Bruteforce :O(n2)
 /*
   ArrayList<Integer> al = new ArrayList<>();
   int n = nums.length;
   int count=0;
 
 
-  for(int i=0;i<n;i++)
-  {
-        if()
-  }
-
 */
+/*
 int n = v.length; //size of the array
         List<Integer> ls = new ArrayList<>(); // list of answers
 
@@ -41,7 +77,7 @@ int n = v.length; //size of the array
 
         return ls;
     
-
+*/
 
 /* my solution : memory limit exceeded : 
 
