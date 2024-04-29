@@ -2,7 +2,7 @@ class Solution {
     public List<Integer> majorityElement(int[] v) {
 
 //Hashing 2 iteration ::
-
+/*
 ArrayList<Integer> al = new ArrayList<>();
 
 HashMap<Integer,Integer> mpp = new HashMap<>();
@@ -34,10 +34,49 @@ for(int i=0;i<n;i++)
   }
   return al;
 
+*/
 
 
+//Hashing 1 iteration :
 
 
+ArrayList<Integer> al = new ArrayList<>();
+
+HashMap<Integer,Integer> mpp = new HashMap<>();
+
+int n = v.length;
+int mini = (int)(n / 3) + 1;
+
+for(int i=0;i<n;i++)
+{
+    int freq=0;
+    int key = v[i];
+
+    if(mpp.containsKey(key))
+    {
+        freq=mpp.get(key);
+        mpp.put(key,freq);
+    }
+
+    freq++;
+    
+    mpp.put(key,freq);
+/*
+    if(mpp.get(key)>n/3)
+    {
+        al.add(key);
+    }
+   */  
+   if(mpp.get(v[i])==mini)
+   {
+    al.add(v[i]);
+   }
+   if(al.size()==2)
+    break;
+
+}
+
+return al;
 
 
 
