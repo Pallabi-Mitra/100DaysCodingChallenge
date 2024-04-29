@@ -1,5 +1,5 @@
 class Solution {
-    public int majorityElement(int[] nums) {
+    public int majorityElement(int[] v) {
 
 // Brute Force : Set
 /*
@@ -31,10 +31,7 @@ class Solution {
 /*
         
        long count;
-        
-       
-
-        int n = nums.length;
+      int n = nums.length;
         int i=0 , j;
 
         while(i<n)
@@ -60,13 +57,13 @@ class Solution {
         return -1;  
 */
         // Better Solution : Hashing : 
-/*
 
-        int n = nums.length;
+
+        int n = v.length;
         int i ;
 
         HashMap<Integer,Integer> mpp = new HashMap<>();
-
+/*
         for(i=0;i<n;i++)
         {
             int freq=0;
@@ -81,7 +78,23 @@ class Solution {
 
             mpp.put(key,freq);
         }
+*/
 
+        for(i=0;i<n;i++)
+  {
+    int freq=1;
+    if(mpp.containsKey(v[i]))
+    {
+        int rem=mpp.get(v[i]);
+        rem++;
+        mpp.put(v[i],rem);
+      
+    }
+    else
+    {
+        mpp.put(v[i],freq);
+    }
+  }
       int res=0;
      for(Map.Entry<Integer,Integer> it : mpp.entrySet())
      {
@@ -97,11 +110,12 @@ class Solution {
 
         return res;
 
-        */
+    }
+}
 
 
         // Moore's Voting Algorithm : 
-
+/*
         int n = nums.length;
 
         int i;
@@ -145,3 +159,4 @@ class Solution {
         return -1;
     }
 }
+*/
