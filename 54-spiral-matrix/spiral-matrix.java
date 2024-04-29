@@ -1,5 +1,66 @@
 class Solution {
-    public List<Integer> spiralOrder(int[][] mat) {
+    public List<Integer> spiralOrder(int[][] matrix) {
+
+// Optimal : T.C : O(n*m), SC : O(n*m)
+
+
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int i,j;
+       ArrayList<Integer> al = new ArrayList<>();
+
+
+        int top=0;
+        int bottom = n-1;
+        int left=0;
+        int right=m-1;
+
+    while(left<=right && top<=bottom)
+    {
+                    for(i=left;i<=right;i++)
+                    {
+                        al.add(matrix[top][i]);
+                    }
+                        top++;
+// incase of 1 row only, : top if not less than botton not work
+                for(i=top;i<=bottom;i++)
+                {
+                    al.add(matrix[i][right]);
+                }
+                right--;
+
+         if(top<=bottom) // if new row is not present what to print
+         {
+                for(i=right;i>=left;i--)
+                {
+                    al.add(matrix[bottom][i]);
+                }
+
+                bottom--;
+         }       
+
+                
+        if(left<=right) //inside spiral without top
+        {
+
+        
+                for(i=bottom;i>=top;i--)
+                {
+                    al.add(matrix[i][left]);
+                }
+                left++;
+
+                
+        }
+    }
+    return al;
+
+
+
+
+
+
+
 
 //Bruteforce : 
 /*
@@ -66,6 +127,7 @@ class Solution {
 return al;
 
 */
+/*
  List<Integer> ans = new ArrayList<>();
         
         int n = mat.length; // no. of rows
@@ -106,7 +168,7 @@ return al;
             }
         }
         return ans;
-
+*/
         
     }
 }
