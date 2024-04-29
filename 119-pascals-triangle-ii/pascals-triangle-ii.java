@@ -9,11 +9,15 @@ class Solution {
     al.add(1);
     for(int i = 1;i<n;i++)
     {
+        /*
         long next = ans*(n-i)/i;
-        
-        
         al.add((int)next);
         ans=next;
+        */
+
+        ans=ans*(n-i);
+        ans=ans/i;
+        al.add((int)ans);
     }
     return al;
     
