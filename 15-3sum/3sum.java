@@ -1,11 +1,85 @@
 class Solution {
-    public List<List<Integer>> threeSum(int[] nums) {
+    public List<List<Integer>> threeSum(int[] arr) {
+
+//2-pointer approach :
+
+
+    List<List<Integer>> ans = new ArrayList<>();
+        Arrays.sort(arr);
+        int n = arr.length;
+
+        for (int i = 0; i < n; i++) {
+            //remove duplicates:
+            if (i != 0 && arr[i] == arr[i - 1]) continue;
+
+            //moving 2 pointers:
+            int j = i + 1;
+            int k = n - 1;
+            while (j < k) {
+                int sum = arr[i] + arr[j] + arr[k];
+                if (sum < 0) {
+                    j++;
+                } else if (sum > 0) {
+                    k--;
+                } else {
+                    List<Integer> temp = Arrays.asList(arr[i], arr[j], arr[k]);
+                    ans.add(temp);
+                    j++;
+                    k--;
+                    //skip the duplicates:
+                    while (j < k && arr[j] == arr[j - 1]) j++;
+                    while (j < k && arr[k] == arr[k + 1]) k--;
+                }
+            }
+        }
+
+        return ans;
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Better Solution : Hashing : O(n^2):
+// using extra data structure to filter out the duplicates 
+/*
 
 
+Set<List<Integer>> ans = new HashSet<>();
 
+int n = nums.length;
+
+for(int i =0;i<n;i++)
+{
+    HashSet<Integer> st = new HashSet<>();
+    for(int j = i+1;j<n;j++)
+    {
+        int find = -(nums[i]+nums[j]);
+
+        if(st.contains(find))
+        {
+            List<Integer> temp = Arrays.asList(nums[i],nums[j],find);
+            temp.sort(null);
+            ans.add(temp);
+        }
+
+        st.add(nums[j]);
+    }
+}
+
+List<List<Integer>> al = new ArrayList<>(ans);
+    return al;
+
+*/
+
+/*
 
 HashMap<Integer,Integer> mpp = new HashMap<>();
 //List<Integer> ans = new ArrayList<>();
@@ -42,7 +116,7 @@ for(i=0;i<n;i++)
         
         return al;
 
-
+*/
 
 
         //Bruteforce : T.C :  O(n^3), SC : using set DS
