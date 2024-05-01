@@ -8,11 +8,11 @@ class Solution {
         for(int i=n-2;i>=0;i--)
         {
             max=Math.max(max,nums[i]);
-            if(max <= nums[i]) continue;
+            if(max == nums[i]) continue;
             int diff = max-nums[i];
             ans = Math.max(ans,diff);
                     
-            }
+         }
 
             return ans;
         
