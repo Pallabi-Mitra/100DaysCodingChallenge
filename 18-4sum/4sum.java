@@ -1,6 +1,6 @@
 class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
-
+/*
 int n = nums.length; // size of the array
         Set<List<Integer>> st = new HashSet<>();
 
@@ -32,9 +32,10 @@ int n = nums.length; // size of the array
         return ans;
     }
 }
+*/
 //Better Solution : O(n^3)
 
-/*
+
 int n = nums.length;
 
 Set<List<Integer>> st = new HashSet<>();
@@ -46,9 +47,9 @@ for(int i = 0;i<n;i++)
         Set<Long> hashset = new HashSet<>();
         for(int k=j+1;k<n;k++)
         {
-            Long sum = nums[i]+nums[j];
+            long sum = nums[i]+nums[j];
             sum+=nums[k];
-            Long find = target - sum;
+            long find = target - sum;
 
             if(hashset.contains(find))
             {
@@ -56,7 +57,7 @@ for(int i = 0;i<n;i++)
                 temp.sort(null);
                 st.add(temp);
             }
-            hashset.add(nums[k]);
+            hashset.add((long) nums[k]);
         }
     }
 }
@@ -65,8 +66,9 @@ for(int i = 0;i<n;i++)
     List<List<Integer>> al = new ArrayList<>(st);
     return al;
 
-*/
 
+    }
+}
 
 
 
