@@ -1,8 +1,42 @@
 class Solution {
     public int[] findErrorNums(int[] nums) {
 
-      // Brute Force : O(n^2) :
 
+// Optimized : Hashing :
+
+        int n = nums.length;
+        int hash[]=new int[n+1];
+        int ans[]=new int[2];
+/*
+        for(int i = 0;i<=n;i++)
+        {
+                hash[i]=0;
+        }
+*/
+        for(int i=0;i<n;i++)
+        {
+            hash[nums[i]]++;
+        }
+
+        for(int i =1;i<=n;i++)
+        {
+            if(hash[i]==2)
+            {
+                ans[0]=i;
+            }
+            if(hash[i]==0)
+            {
+                ans[1]=i;
+            }
+        }
+
+return ans;
+
+
+
+
+      // Brute Force : O(n^2) :
+/*
         int n = nums.length;
         int repeating = -1;
         int missing = -1;
@@ -43,7 +77,7 @@ class Solution {
         ans[0]=repeating;
         ans[1]=missing;
         return ans;
-
+*/
         // My Hashing Method : 
         /*
         int n = nums.length;
