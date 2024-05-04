@@ -15,7 +15,8 @@ class Solution {
         }
         return false;
     */
-
+// HashSet :
+/*
     HashSet<Integer> st = new HashSet<>();
 
     for(int i = 0;i<n;i++)
@@ -31,5 +32,20 @@ class Solution {
     {
         return false;
     }
+    */
+
+    // Hashset approach 1 :
+
+    HashSet<Integer> seen = new HashSet<>();
+    for(int num : nums)
+    {
+        if(seen.contains(num))
+        {
+            return true;
+        }
+
+        seen.add(num);
+    }
+    return false;
     }
 }
