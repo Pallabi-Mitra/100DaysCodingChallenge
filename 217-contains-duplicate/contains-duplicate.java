@@ -34,7 +34,8 @@ class Solution {
     }
     */
 
-    // Hashset approach 1 :
+    // Hashset approach 1 : faster
+    /*
 
     HashSet<Integer> seen = new HashSet<>();
     for(int num : nums)
@@ -46,6 +47,23 @@ class Solution {
 
         seen.add(num);
     }
+    return false;
+    */
+
+    //HashMap Approach :
+
+    HashMap<Integer,Integer> mpp = new HashMap<>();
+
+    for(int i = 0;i<n;i++)
+    {
+        if(mpp.containsKey(nums[i]) && mpp.get(nums[i])>=1)
+        {
+            return true;
+        }
+
+        mpp.put(nums[i], mpp.getOrDefault(nums[i],0)+1);
+    }
+
     return false;
     }
 }
