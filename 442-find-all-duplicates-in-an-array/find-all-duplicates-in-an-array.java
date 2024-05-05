@@ -1,8 +1,50 @@
 class Solution {
     public List<Integer> findDuplicates(int[] nums) {
 
+// optimized : Hash Table
 
-// Optimized : HashMap
+List<Integer> ans = new ArrayList<>();
+        int n = nums.length;
+
+        int i,j;
+
+    int hash[]=new int[n+1];
+
+    for(i=0;i<n;i++)
+    {
+        hash[nums[i]]++;
+    }
+
+    for(i=0;i<=n;i++)
+    {
+        if(hash[i]==2)
+        {
+            ans.add(i);
+        }
+    }
+
+    return ans;
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Optimized : HashMap TC :O(n log n)
+
+
+/*
 
 
 List<Integer> ans = new ArrayList<>();
@@ -17,7 +59,7 @@ HashMap<Integer, Integer> map = new HashMap<>();
         {
             map.put(element, 1);
         }
-        else
+        else // its not duplicate, the value gets overridden
         {
             map.put(element, map.get(element)+1);
         }
@@ -33,15 +75,9 @@ HashMap<Integer, Integer> map = new HashMap<>();
 
 return ans;
 
-
-
-
-
-
-
     }
 }
-
+*/
 
 /* optimized : 
 
