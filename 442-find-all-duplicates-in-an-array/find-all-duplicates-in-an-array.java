@@ -2,7 +2,48 @@ class Solution {
     public List<Integer> findDuplicates(int[] nums) {
 
 
-// Optimized :
+// Optimized : HashMap
+
+
+List<Integer> ans = new ArrayList<>();
+        int n = nums.length;
+
+
+HashMap<Integer, Integer> map = new HashMap<>();
+         
+    for (int element : nums) 
+    {   
+        if(map.get(element) == null)
+        {
+            map.put(element, 1);
+        }
+        else
+        {
+            map.put(element, map.get(element)+1);
+        }
+    }
+         
+   for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+     
+        if(entry.getValue() > 1)
+        {
+           ans.add(entry.getKey());
+        }
+    }
+
+return ans;
+
+
+
+
+
+
+
+    }
+}
+
+
+/* optimized : 
 
  List<Integer> ans = new ArrayList<>();
         int n = nums.length;
@@ -17,7 +58,7 @@ class Solution {
     }
 }
 
-
+*/
 
 
 
