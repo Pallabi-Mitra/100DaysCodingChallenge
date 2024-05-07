@@ -15,28 +15,7 @@ class Solution {
        }
 
        return low;
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
+  
         /*
         int j = 1;
         for (int i = 1; i < nums.length; i++) {
