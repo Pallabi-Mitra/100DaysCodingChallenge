@@ -1,11 +1,12 @@
 class Solution {
-    public int pivotIndex(int[] dp) {
+    public int pivotIndex(int[] nums) {
 
 /*
 
  int n=nums.length;
         int tSum=0;
-        for(int i=0;i<n;i++) tSum+=nums[i];
+        for(int i=0;i<n;i++)
+         tSum+=nums[i];
         int prefixSum=0;
         int suffixSum=tSum;
         for(int i=0;i<n;i++){
@@ -20,20 +21,28 @@ class Solution {
             if(prefixSum==suffixSum) return i;
         }
         return -1;
-        */
-         int n=dp.length;
-        for(int i=1;i<n;i++){
-            dp[i]+=dp[i-1];
+   */
+
+   int n=nums.length;
+        int rs=0;
+        int ls=0;
+
+        for(int i =0;i<n;i++)
+        {
+            rs+=nums[i];
         }
-        if(dp[n-1]-dp[0]==0)
-            return 0;
-        for(int i=1;i<n-1;i++){
-            if(dp[i-1]==dp[n-1]-dp[i])
+
+        for(int i =0;i<n;i++)
+        {
+            rs-=nums[i];
+
+            if(ls==rs)
                 return i;
+            ls+=nums[i];
         }
-        if(dp[n-2]==0)
-            return n-1;
         return -1;
+
+        
     }
 }
 //bruteforce : O(n2):
