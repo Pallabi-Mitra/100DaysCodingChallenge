@@ -1,7 +1,7 @@
 class Solution {
-    public int pivotIndex(int[] nums) {
+    public int pivotIndex(int[] dp) {
 
-
+/*
 
  int n=nums.length;
         int tSum=0;
@@ -19,6 +19,20 @@ class Solution {
             }
             if(prefixSum==suffixSum) return i;
         }
+        return -1;
+        */
+         int n=dp.length;
+        for(int i=1;i<n;i++){
+            dp[i]+=dp[i-1];
+        }
+        if(dp[n-1]-dp[0]==0)
+            return 0;
+        for(int i=1;i<n-1;i++){
+            if(dp[i-1]==dp[n-1]-dp[i])
+                return i;
+        }
+        if(dp[n-2]==0)
+            return n-1;
         return -1;
     }
 }
