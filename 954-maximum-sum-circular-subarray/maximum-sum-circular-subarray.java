@@ -1,6 +1,62 @@
 class Solution {
     public int maxSubarraySumCircular(int[] nums) {
 
+int total = 0, maxSum = nums[0], curMax = 0, minSum = nums[0], curMin = 0;
+int n = nums.length;
+
+       for (int i =0;i<n;i++) {
+
+            curMax = Math.max(curMax + nums[i], nums[i]);
+            maxSum = Math.max(maxSum, curMax);
+            
+
+             total += nums[i];
+
+             curMin = Math.min(curMin + nums[i], nums[i]);
+             minSum = Math.min(minSum, curMin);
+           
+           
+        }
+        return maxSum > 0 ? Math.max(maxSum, total - minSum) : maxSum;
+    }
+}
+
+// optimized :
+/*
+ int total = 0, maxSum = nums[0], curMax = 0, minSum = nums[0], curMin = 0;
+
+
+       for (int a : nums) {
+
+            curMax = Math.max(curMax + a, a);
+            maxSum = Math.max(maxSum, curMax);
+            
+
+             total += a;
+
+             curMin = Math.min(curMin + a, a);
+             minSum = Math.min(minSum, curMin);
+           
+           
+        }
+        return maxSum > 0 ? Math.max(maxSum, total - minSum) : maxSum;
+ */
+
+//Bruteforce :
+
+
+
+
+
+
+
+
+
+
+
+    
+// Try :
+
 /*
 int n = nums.length;
 
@@ -19,26 +75,6 @@ for(int i=0;i<n;i++)
 
 */
 
-
- int total = 0, maxSum = nums[0], curMax = 0, minSum = nums[0], curMin = 0;
-
-
-       for (int a : nums) {
-
-            curMax = Math.max(curMax + a, a);
-            maxSum = Math.max(maxSum, curMax);
-            
-
-             total += a;
-
-             curMin = Math.min(curMin + a, a);
-             minSum = Math.min(minSum, curMin);
-           
-           
-        }
-        return maxSum > 0 ? Math.max(maxSum, total - minSum) : maxSum;
-        
-    
 /*
         int n = nums.length;
         int maxi = Integer.MIN_VALUE;
@@ -65,6 +101,7 @@ for(int i=0;i<n;i++)
         }
 
         return maxi;
-        */
+        
     }
 }
+*/
