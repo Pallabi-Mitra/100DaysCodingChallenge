@@ -12,7 +12,7 @@ int i,j;
 for(i=0;i<n;i++)
 {
    // for(j=i+1;j<n-1;j++)
-    for(j=i;j<n;j++)
+    for(j=i+1;j<n;j++)
     {
         int temp = matrix[i][j];
         matrix[i][j]=matrix[j][i];
