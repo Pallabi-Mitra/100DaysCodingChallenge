@@ -110,9 +110,9 @@ for(int i=0;i<n;i++)
 */
 
 
-//Hashing 1 iteration :
+//Hashing 1 iteration : Better approach use this
 
-/*
+
 ArrayList<Integer> al = new ArrayList<>();
 
 HashMap<Integer,Integer> mpp = new HashMap<>();
@@ -128,16 +128,16 @@ for(int i=0;i<n;i++)
     if(mpp.containsKey(key))
     {
         freq=mpp.get(key);
-        mpp.put(key,freq);
+      //  mpp.put(key,freq);
     }
 
     freq++;
     
     mpp.put(key,freq);
 
-   // if(mpp.get(key)>n/3)
+    //if(mpp.get(key)>n/3)
     
-     //   al.add(key); 
+     // al.add(key); 
    
    
    if(mpp.get(v[i])==mini) // avoids adding same element in list [2,2]
@@ -151,12 +151,13 @@ for(int i=0;i<n;i++)
 
 return al;
     }
-    }
+}
 
-*/
+
 
 
 //Bruteforce :O(n2)
+/*
 
   ArrayList<Integer> al = new ArrayList<>();
  
@@ -189,7 +190,7 @@ int n = v.length; //size of the array
         return ls;
         }
         }
-    
+    */
 
 
 /* my solution : memory limit exceeded : 
