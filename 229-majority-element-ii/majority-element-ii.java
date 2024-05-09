@@ -2,8 +2,8 @@ class Solution {
     public List<Integer> majorityElement(int[] v) {
 
 
-// Optimal Solution : Moore's Voting Algorithm_ for 2 elements : 
-
+// Optimal Solution : Moore's Voting Algorithm_ for 2 elements : O(2N), O(1)
+/*
 
 int n =v.length;
 int ele1=Integer.MIN_VALUE;
@@ -70,16 +70,7 @@ return al;
     }
 }
 
-
-
-
-
-
-
-
-
-
-
+*/
 
 //Hashing 2 iteration :: T.C : O(n), SC : O(N)
 /*
@@ -166,9 +157,9 @@ return al;
 
 
 //Bruteforce :O(n2)
-/*
+
   ArrayList<Integer> al = new ArrayList<>();
-  int n = nums.length;
+ 
   int count=0;
 
 int n = v.length; //size of the array
@@ -199,7 +190,7 @@ int n = v.length; //size of the array
         }
         }
     
-*/
+
 
 /* my solution : memory limit exceeded : 
 
