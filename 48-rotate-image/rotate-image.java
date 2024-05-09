@@ -21,7 +21,7 @@ for(i=0;i<n;i++)
 }
 
 //Reverse : O(n * n/2)
-
+/*
 for(i=0;i<n;i++)
 {
     for(j=0;j<n/2;j++)
@@ -31,7 +31,24 @@ for(i=0;i<n;i++)
         matrix[i][n-1-j]=temp;
     }
 }
+*/
 
+// reverse using 2 pointers :
+
+
+for(i=0;i<n;i++)
+{
+    int left = 0;
+int right = n-1;
+    for(j=0;j<n/2;j++)
+    {
+        int temp = matrix[i][right];
+        matrix[i][right]=matrix[i][left];
+        matrix[i][left]=temp;
+        left++;
+        right--;
+    }
+}
     }
 }
 
