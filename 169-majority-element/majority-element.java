@@ -1,69 +1,18 @@
 class Solution {
-    public int majorityElement(int[] v) {
+    public int majorityElement(int[] nums) {
 
-// Brute Force : Set
-/*
-        HashSet<Integer> s = new HashSet<>();
+
+
+
+
+        // Better Solution : Hashing : o(n) -- hashmap in java takes o(1) to insert elements
+
 
         int n = nums.length;
-
-        for(int i = 0;i<n;i++)
-        {
-            s.put(nums[i]);
-        }
-
-        int s_size = s.size();
-        
-        for(i=0;i<n;i++)
-        {
-            if(nums[i]==s.contains(i))
-            {
-
-            }
-        } 
-
-
-        */
-
-
-
-        // Brute Force : counting
-/*
-        
-       long count;
-      int n = nums.length;
-        int i=0 , j;
-
-        while(i<n)
-        {
-             count = 0;
-               
-
-                for(j=0;j<n;j++)
-                {
-                    if(nums[i]==nums[j])
-                    {
-                        count++;
-                    }
-                }
-                
-                if(count > n/2)
-                {
-                   return nums[i];
-                }
-            i++;   
-        }     
-
-        return -1;  
-*/
-        // Better Solution : Hashing : 
-
-
-        int n = v.length;
         int i ;
 
         HashMap<Integer,Integer> mpp = new HashMap<>();
-/*
+
         for(i=0;i<n;i++)
         {
             int freq=0;
@@ -78,8 +27,9 @@ class Solution {
 
             mpp.put(key,freq);
         }
-*/
 
+// store the occurences count in the map : 
+      /*
         for(i=0;i<n;i++)
   {
     int freq=1;
@@ -95,6 +45,8 @@ class Solution {
         mpp.put(v[i],freq);
     }
   }
+  */
+  // Iterate on the map :
       int res=0;
      for(Map.Entry<Integer,Integer> it : mpp.entrySet())
      {
@@ -160,3 +112,68 @@ class Solution {
     }
 }
 */
+
+
+
+
+
+
+
+
+        // Brute Force : counting method : O(n2)
+/*
+        
+       long count;
+      int n = nums.length;
+        int i=0 , j;
+
+        while(i<n)
+        {
+             count = 0;
+               
+
+                for(j=0;j<n;j++)
+                {
+                    if(nums[i]==nums[j])
+                    {
+                        count++;
+                    }
+                }
+                
+                if(count > n/2)
+                {
+                   return nums[i];
+                }
+            i++;   
+        }     
+
+        return -1;  
+        }
+        }
+
+
+
+
+// Brute Force : Set
+/*
+        HashSet<Integer> s = new HashSet<>();
+
+        int n = nums.length;
+
+        for(int i = 0;i<n;i++)
+        {
+            s.put(nums[i]);
+        }
+
+        int s_size = s.size();
+        
+        for(i=0;i<n;i++)
+        {
+            if(nums[i]==s.contains(i))
+            {
+
+            }
+        } 
+
+
+        */
