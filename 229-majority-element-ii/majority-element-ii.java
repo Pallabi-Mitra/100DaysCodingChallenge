@@ -3,13 +3,15 @@ class Solution {
 
 
 // Optimal Solution : Moore's Voting Algorithm_ for 2 elements : O(2N), O(1)
-/*
+
 
 int n =v.length;
+ArrayList<Integer> al = new ArrayList<>();
+//atmost 2 elements is possible to be majority
 int ele1=Integer.MIN_VALUE;
 int ele2=Integer.MIN_VALUE;
 int count1=0,count2=0;
-
+// since 2 elements we take 2 count variables and 2 elements
 for(int i = 0;i<n;i++)
 {
     if(count1==0 && ele2!=v[i])
@@ -17,7 +19,7 @@ for(int i = 0;i<n;i++)
         count1=1;
         ele1=v[i];
     }
-    else if(count2==0 && ele1!=v[i])
+    else if(count2==0 && ele1!=v[i]) // to avoid taking same elements
     {
         count2=1;
         ele2=v[i];
@@ -30,7 +32,7 @@ for(int i = 0;i<n;i++)
     {
         count2++;
     }
-    else
+    else // if some other elements we decrese the count
     {
         count1--;
         count2--;
@@ -38,7 +40,7 @@ for(int i = 0;i<n;i++)
 
 }
 
-ArrayList<Integer> al = new ArrayList<>();
+// manual check to see if the ele1 and ele2 is majority or not
 
 count1=0;
 count2=0;
@@ -57,7 +59,7 @@ for(int i=0;i<n;i++)
 
 }
 
-if(count1>=mini)
+if(count1>=mini) // if majority then add
 {
     al.add(ele1);
 }
@@ -70,7 +72,7 @@ return al;
     }
 }
 
-*/
+
 
 //Hashing 2 iteration :: T.C : O(n), SC : O(N)
 /*
@@ -111,7 +113,7 @@ for(int i=0;i<n;i++)
 
 
 //Hashing 1 iteration : Better approach use this
-
+/*
 
 ArrayList<Integer> al = new ArrayList<>();
 
@@ -135,12 +137,12 @@ for(int i=0;i<n;i++)
     
     mpp.put(key,freq);
 
-    //if(mpp.get(key)>n/3)
+   // if(mpp.get(key)>n/3)
     
-     // al.add(key); 
+    //  al.add(key); 
    
    
-   if(mpp.get(v[i])==mini) // avoids adding same element in list [2,2]
+   if(mpp.get(v[i])==mini) // avoids adding same element in list eg : arr: [2,2]
    {
     al.add(v[i]);
    }
@@ -153,7 +155,7 @@ return al;
     }
 }
 
-
+*/
 
 
 //Bruteforce :O(n2)
