@@ -2,12 +2,60 @@ class Solution {
     public int majorityElement(int[] nums) {
 
 
+        // Moore's Voting Algorithm : 
+
+        int n = nums.length;
+
+        int i;
+        int count=0;
+        int ele=0; 
+    
+        for(i=0;i<n;i++)
+        {
+         if(count==0) // if counts get 0 we start to form a new array
+            {
+              
+                count=1;
+                ele = nums[i];
+            }
+            else if(nums[i]==ele) // if same element we continue increasing the count
+            {
+                    count++;
+            }
+            else // if different we decrease the count
+            {
+                    count--;
+            }
+
+
+        }
+        return ele;
+// reiterates the array to check if the element chosen is majority or not :
+/*
+        int count1=0;
+
+        for(i=0;i<n;i++)
+        {
+                if(nums[i]==ele)
+                {
+                    count1++;
+                }
+        }
+
+        if(count1> n/2)
+        {
+            return ele;
+        }
+        return -1;
+        */
+    }
+}
 
 
 
         // Better Solution : Hashing : o(n) -- hashmap in java takes o(1) to insert elements
 
-
+/*
         int n = nums.length;
         int i ;
 
@@ -29,7 +77,7 @@ class Solution {
         }
 
 // store the occurences count in the map : 
-      /*
+      
         for(i=0;i<n;i++)
   {
     int freq=1;
@@ -45,7 +93,7 @@ class Solution {
         mpp.put(v[i],freq);
     }
   }
-  */
+  
   // Iterate on the map :
       int res=0;
      for(Map.Entry<Integer,Integer> it : mpp.entrySet())
@@ -64,7 +112,7 @@ class Solution {
 
     }
 }
-
+*/
 
         // Moore's Voting Algorithm : 
 /*
@@ -76,24 +124,24 @@ class Solution {
     
         for(i=0;i<n;i++)
         {
-         if(count==0)
+         if(count==0) // if counts get 0 we start to form a new array
             {
               
                 count=1;
                 ele = nums[i];
             }
-            else if(nums[i]==ele)
+            else if(nums[i]==ele) // if same element we continue increasing the count
             {
                     count++;
             }
-            else
+            else // if different we decrease the count
             {
                     count--;
             }
 
 
         }
-
+// reiterates the array to check if the element chosen is majority or not :
         int count1=0;
 
         for(i=0;i<n;i++)
