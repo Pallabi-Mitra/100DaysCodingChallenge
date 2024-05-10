@@ -1,4 +1,13 @@
 class Solution {
+    public int calculate_total(int arr[],int hour)
+        {
+             int total = 0;
+            for(int i = 0;i<arr.length;i++)
+            {
+                total +=Math.ceil((double)arr[i]/(double)hour); 
+            }
+            return total;
+        }
     public int minEatingSpeed(int[] piles, int h) {
 
         int low =1;
@@ -18,15 +27,19 @@ class Solution {
         
         int ans = Integer.MAX_VALUE;
 
+        
+
         while(low<=high)
         {
             int mid = (low+high)/2;
+            /*
             int total = 0;
             for(int i = 0;i<n;i++)
             {
                 total +=Math.ceil((double)piles[i]/(double)mid); 
             }
-
+        */
+            int total = calculate_total(piles,mid);
             if(total<=h) // keep looking for minimum speed value possible
             {
                 ans = mid;
