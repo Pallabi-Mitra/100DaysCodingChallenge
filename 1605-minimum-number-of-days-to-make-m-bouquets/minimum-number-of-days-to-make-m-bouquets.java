@@ -1,3 +1,5 @@
+/*
+
 class Solution {
 
     public int minDays(int[] bloomDay, int m, int k) {
@@ -47,6 +49,7 @@ class Solution {
 }
 
 
+*/
 
 
 
@@ -58,10 +61,10 @@ class Solution {
 
 
 
-/*
 
 class Solution {
 
+/*
         public int roseGarden(int[] bloomDay, int mid, int k)
         {
             int total =0;
@@ -81,6 +84,26 @@ class Solution {
               total += Math.floor((double)count/(double)k);
             return total;
         }
+        */
+
+ public int roseGarden(int[] bloomDay, int mid, int k){
+        int bouquets = 0, flowersCollected = 0;
+        for (int value : bloomDay) {
+            if (value <= mid) {
+//                If the current flower can be taken with in days then increase the flower flowersCollected.
+                flowersCollected++;
+            } else {
+//                If there is a flower in between that takes more number of days then the given day, then resent the counter.
+                flowersCollected = 0;
+            }
+//            If the flowersCollected is same as the required flower per bookie, then increase the bouquets count;
+            if (flowersCollected == k) {
+                bouquets++;
+                flowersCollected = 0;
+            }
+        }
+        return bouquets;
+}
 
     public int minDays(int[] bloomDay, int m, int k) {
 
@@ -123,4 +146,3 @@ return ans;
         
     }
 }
-*/
