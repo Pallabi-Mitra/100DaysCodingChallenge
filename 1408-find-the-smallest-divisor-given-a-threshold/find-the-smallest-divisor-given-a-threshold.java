@@ -23,27 +23,28 @@ class Solution {
         for(int i = 0;i<n ;i++)
         {
             maxi = Math.max(maxi,nums[i]);
-            mini= Math.min(mini,nums[i]);
+          //  mini= Math.min(mini,nums[i]);
         }
 
-        int low = 1;
+        int low = 1; // starts from 1
         int high = maxi;
         int ans =-1;
-
+        if(n > threshold) return -1;
         while(low<=high)
         {
             int mid=(low+high)/2;
 
            int res = findSum(nums,mid);
 
-            if(res<=threshold)
+            if(res<=threshold) 
             {
-                ans = mid;
-                high=mid-1;
+                ans = mid; // could be ans
+                high=mid-1; // but we keep looking for minimum
             }
-            else
+            else // if the summation came more, we need to get bigger value to divide,
+             
             {
-                low=mid+1;
+                low=mid+1;     // so we increase the low
             }
         }
 return ans;
