@@ -20,6 +20,7 @@ class Solution {
             return count;
         }
 */
+/*
 int i =0;
 int m = a.length;
         while(total<=mid && i<m)
@@ -35,7 +36,23 @@ int m = a.length;
                 i++;
         }
         return count;
+ */
+    for(int i = 0;i< a.length;i++)
+    {
+        if(a[i]+total>mid)
+        {
+            count++;
+            total=a[i];
+        }
+        else
+        {
+            total+=a[i];
+        }
         
+    }
+
+return count;
+
     }
     public int shipWithinDays(int[] weights, int days) {
 
