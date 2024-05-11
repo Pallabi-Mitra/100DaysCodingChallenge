@@ -1,8 +1,66 @@
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         
-// Better Approach :
+// Optimal :
 
+int n1 = nums1.length;
+int n2 = nums2.length;
+int left = (n1+n2+1)/2; // no of elements in left partition
+
+if(n1>n2)
+    return findMedianSortedArrays(nums2,nums1); // swaps array, I need smaller array at first
+
+int low= 0; int high = n1; // size of smaller array1
+int n = n1+n2;
+while(low<=high)
+{
+    int mid1 = (low+high)/2;
+    int mid2= left-mid1; 
+    // incase the values are not there :
+    int l1 = Integer.MIN_VALUE;
+    int l2 = Integer.MIN_VALUE;
+    int r1 = Integer.MAX_VALUE;
+    int r2 = Integer.MAX_VALUE;
+    //assigning values :
+
+    if(mid1 < n1 ) r1 = nums1[mid1]; // 1st array smallest
+    if(mid2 < n2)  r2 = nums2[mid2]; // 2nd array smallest
+
+    if(mid1-1>=0) l1= nums1[mid1-1]; // 1st array largest element
+    if(mid2-1>=0) l2 = nums2[mid2-1]; // 2nd array largest element
+
+    if(l1<=r2 && l2 <= r1) // Valid Symmetry - Possible
+    {
+        if(n%2==1) return Math.max(l1,l2);
+        return ((double)(Math.max(l1,l2)+Math.min(r1,r2)))/2.0;
+    }
+    else if(l1> r2)
+    {
+        high = mid1-1;// take lesser elements to make left smaller , eliminate right
+    }
+    else
+    {
+        low=mid1+1; // take more elements to reduce right value, so eliminate left space
+    }
+
+
+}
+return 0;
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+// Better Approach : without extra space
+/*
 
 int n = nums1.length;
 int m = nums2.length;
@@ -12,7 +70,7 @@ int j = 0;
 
 int total = n+m;
 
-int index2 = total/2;
+int index2 = total/2; // for odd median
 int index1= index2-1;
 int cnt = 0;
 
@@ -21,9 +79,9 @@ int index2_element = -1;
 
 while(i< n && j<m)
 {
-    if(nums1[i]<nums2[j])
+    if(nums1[i]<nums2[j])//whichever is less we take
     {
-        if(cnt==index1) index1_element  = nums1[i];
+        if(cnt==index1) index1_element  = nums1[i]; // if counter is same we store the element
         if(cnt==index2) index2_element = nums1[i];
         cnt++;
         i++;
@@ -55,10 +113,10 @@ while(j<m)
 
 }
 
-if(total%2==1)
+if(total%2==1) // if odd this array elemet is median
 return index2_element;
-else
-
+else // if even
+// just add and divide the array elements by 2. to get the median 
 return (double)((double)(index1_element + index2_element))/2.0;
 
 
@@ -70,7 +128,7 @@ return (double)((double)(index1_element + index2_element))/2.0;
     }
 }
 
-
+*/
 // bruteforce :
 /*
 int n = nums1.length;
