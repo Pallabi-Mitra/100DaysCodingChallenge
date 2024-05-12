@@ -9,6 +9,7 @@ public int[] findPeakGrid(int[][] mat) {
             int mid = low + (high-low)/2;
             int ele = mat[0][mid];
             int maxRow = 0;
+            // finding max element in all rows for mid column
             for(int row = 1; row<rows; row++){
                 if(mat[row][mid]>ele){
                     ele = mat[row][mid];
@@ -32,23 +33,8 @@ public int[] findPeakGrid(int[][] mat) {
 
 
 
+/* TLE :
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
     public int maxElement(int[][] mat,int n,int mid)
     {
         int maxi = -1;
@@ -60,14 +46,7 @@ public int[] findPeakGrid(int[][] mat) {
                 maxi=mat[i][mid];
                  index=i;
             }
-            
-            if(mat[i][mid]>mat[i-1][mid])
-            {
-                maxi = mat[i][mid];
-                
-            }
-            
-           // maxi = Math.max(maxi,mat[i][mid]);
+           
            
         }
         return index;
