@@ -27,10 +27,10 @@ public class Solution {
            
             if(mpp.containsKey(temp))
             {
-                if(mpp.get(temp)!=null)
-                {
+               // if(mpp.get(temp)!=null)
+               // {
                          return temp;
-                }
+               // }
                
             }
           
