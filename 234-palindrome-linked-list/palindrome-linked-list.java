@@ -9,11 +9,66 @@
  * }
  */
 class Solution {
+
+    public ListNode reverse(ListNode slow)
+    {
+       // ListNode temp = slow;
+        ListNode prev=null;
+    
+    while(slow!=null)
+    {
+        ListNode after = slow.next;
+        slow.next=prev;
+        prev=slow;
+        slow=after;
+    }
+    return prev;
+
+    }
     public boolean isPalindrome(ListNode head) {
 
+// Optimized : tortoise hare 
 
-// Bruteforce :
 
+    // find the middle of LL :
+
+    ListNode slow = head;
+    ListNode fast = head;
+
+    while(fast.next!= null && fast.next.next!=null)
+    {
+        slow= slow.next;
+        fast=fast.next.next;
+    }
+
+    ListNode newhead = reverse(slow.next);
+    
+    ListNode left = head;
+    ListNode right=newhead;
+
+while(right!=null)
+{
+    if(left.val!=right.val)
+    {
+        reverse(newhead);
+        return false;
+    }
+    left=left.next;
+    right=right.next;
+}
+   reverse(newhead); 
+
+    return true;
+
+
+
+
+    }
+}
+
+
+// Bruteforce : Using Stack : 
+/*
 Stack<Integer> st = new Stack<>();
 
 ListNode temp = head;
@@ -41,21 +96,7 @@ return true;
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
         // code converting into no and checking : all testcases not passed :
         /*
 
