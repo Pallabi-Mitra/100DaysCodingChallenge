@@ -10,29 +10,40 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-
-        ListNode before = null; 
-        ListNode temp = head;
-        /*ListNode tail;
+        // Create a temporary pointer to
+        // traverse the linked list
+        ListNode temp = head;       
         
-        temp = head;
-        head=tail;
-        tail=temp;*/
-        ListNode after; 
+        // Create a stack to temporarily
+        //store the data values
+        Stack<Integer> stack = new Stack<>();  
 
-
-       
-        while(temp!=null)
-        {
-            after=temp.next;
-            temp.next=before;
-            before=temp;
-            temp=after;
-
-
-
+        // Step 1: Push the values of the
+        // linked list onto the stack
+        while (temp != null) {
+             // Push the current node's
+             // data onto the stack
+            stack.push(temp.val); 
+             // Move to the next node
+             // in the linked list
+            temp = temp.next;      
         }
-        return before;
-        
+         // Reset the temporary pointer
+         // to the head of the linked list
+        temp = head;  
+
+        // Step 2: Pop values from the stack
+        // and update the linked list
+        while (temp != null) {
+            // Set the current node's data
+            // to the value at the top of the stack
+            temp.val = stack.pop();  
+            // Move to the next node
+            // in the linked list
+            temp = temp.next;         
+        }
+        // Return the new head of
+        // the reversed linked list
+        return head;  
     }
-}
+    }
