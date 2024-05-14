@@ -12,7 +12,44 @@
 
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        
+
+// Bruteforce : 
+
+    ListNode temp= head;
+    int cnt = 0;
+    while(temp!=null)
+    {
+        cnt++;
+        temp=temp.next;
+    }
+
+    if(cnt == n)
+    {
+        ListNode newhead = head.next;
+        head=null;
+        return newhead;
+    }
+    
+    temp=head;
+    int res= cnt-n;
+    while(temp!=null)
+    {
+        res--;
+        if(res==0)
+        {
+            break;
+           
+        }
+        temp=temp.next;
+    }
+     temp.next=temp.next.next;
+
+return head;
+    }
+}
+
+
+     /*   
         ListNode fast= head;
         ListNode slow = head;
 
@@ -37,3 +74,5 @@ class Solution {
         return head;
     }
 }
+
+*/
