@@ -11,6 +11,42 @@
 class Solution {
     public ListNode oddEvenList(ListNode head) {
         
+
+// Optimized : 
+
+
+
+
+if(head==null || head.next==null) 
+return head;
+ListNode odd = head;
+ListNode even = head.next;
+ListNode evenHead=head.next;
+    while(even!=null && even.next!=null)
+    {
+        odd.next=odd.next.next;
+        even.next=even.next.next;
+        odd=odd.next;
+        even= even.next;
+    }
+
+    odd.next=evenHead;
+
+    return head;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+        /* Bruteforce : Using ArrayList
         ArrayList<Integer> al = new ArrayList<>();
 
         ListNode temp = head;
@@ -48,3 +84,4 @@ class Solution {
 
     }
 }
+*/
