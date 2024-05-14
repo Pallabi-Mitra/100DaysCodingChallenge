@@ -12,6 +12,31 @@
 public class Solution {
     public boolean hasCycle(ListNode head) {
 
+//Bruteforce : Using Hashing
+
+
+    HashMap<ListNode,Integer> mpp = new HashMap<>();
+
+    ListNode temp = head;
+
+    while(temp!=null)
+    {
+        if(mpp.containsKey(temp))
+        {
+            return true;
+        }
+        mpp.put(temp,1);
+        temp=temp.next;
+    }
+    return false;
+    }
+}
+
+
+
+
+/* Optimized :
+
         ListNode slow=head;
         ListNode fast=head;
 
@@ -30,3 +55,4 @@ public class Solution {
 
     }
 }
+*/
