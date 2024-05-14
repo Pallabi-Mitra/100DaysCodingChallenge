@@ -19,12 +19,20 @@ ListNode slow= head;
 ListNode fast=head;
 
 int cnt = 0;
-fast=fast.next.next;
+
     while(fast!=null && fast.next!=null)
     {
-
-        slow=slow.next;
+        if(cnt==0)
+        {
+            fast=fast.next.next;
+            cnt++;
+        }
+        else
+        {
+ slow=slow.next;
         fast=fast.next.next;
+        }
+       
        
     }
     slow.next=slow.next.next;
