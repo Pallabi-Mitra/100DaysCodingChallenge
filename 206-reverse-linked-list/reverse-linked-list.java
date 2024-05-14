@@ -11,24 +11,42 @@
 class Solution {
     public ListNode reverseList(ListNode head) {
 
-// Optimal : Iterative Method :
+// Optimal : Recursive Method : 
 
-ListNode temp = head;
-ListNode prev = null;
+    if(head==null || head.next==null)
+    {
+        return head;
+    }
+    ListNode newhead = reverseList(head.next);
 
-while(temp!=null)
-{
-    ListNode after = temp.next;
-    temp.next=prev;
-    prev=temp;
-    temp=after;
-}
-return prev;
+    ListNode front = head.next;
+    front.next=head;
+    head.next=null;
+    return newhead;
     }
 }
 
 
 
+
+// Optimal : Iterative Method : TC: O(N), SC: O(1)
+/*
+ListNode temp = head;
+ListNode prev = null;
+
+while(temp!=null)
+{
+    ListNode after = temp.next; // point the next
+    temp.next=prev; // connect current node to previous
+    prev=temp; // current node now becomes previous
+    temp=after; // temp moves to next for next iteration
+}
+return prev; // new head
+    }
+}
+
+
+*/
 // Bruteforce : Using Stack : since it is LIFO it is used for reverse
 /*
         // Create a temporary pointer to
