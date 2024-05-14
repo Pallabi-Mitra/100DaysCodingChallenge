@@ -10,6 +10,27 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
+
+// Optimal : Iterative Method :
+
+ListNode temp = head;
+ListNode prev = null;
+
+while(temp!=null)
+{
+    ListNode after = temp.next;
+    temp.next=prev;
+    prev=temp;
+    temp=after;
+}
+return prev;
+    }
+}
+
+
+
+// Bruteforce : Using Stack : since it is LIFO it is used for reverse
+/*
         // Create a temporary pointer to
         // traverse the linked list
         ListNode temp = head;       
@@ -35,6 +56,7 @@ class Solution {
         // Step 2: Pop values from the stack
         // and update the linked list
         while (temp != null) {
+            //Replace the data of the nodes with stack data
             // Set the current node's data
             // to the value at the top of the stack
             temp.val = stack.pop();  
@@ -47,3 +69,4 @@ class Solution {
         return head;  
     }
     }
+*/
