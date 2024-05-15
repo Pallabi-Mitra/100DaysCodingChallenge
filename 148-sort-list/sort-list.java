@@ -8,7 +8,7 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
- /*
+ 
 class Solution {
     
 
@@ -18,6 +18,9 @@ class Solution {
 
 public ListNode findMiddle(ListNode head)
 {
+     if (head == null || head.next == null)
+            return head;
+
     ListNode slow= head;
     ListNode fast=head.next; // to get the 1st mid
 
@@ -48,6 +51,7 @@ public ListNode mergeTwoLists(ListNode list1, ListNode list2)
             temp.next=list2;
             list2=list2.next;
         }
+        temp=temp.next;
     }
    temp.next = (list1!=null)? list1 : list2;
     return dummyNode.next;
@@ -69,7 +73,9 @@ if(head==null || head.next==null) return head;
 }
 }
 
-*/
+
+//working
+/*
 public class Solution {
     private ListNode findMid(ListNode head) {
         if (head == null || head.next == null)
@@ -112,7 +118,7 @@ public class Solution {
     }
 }
 
-
+*/
 
 
 
