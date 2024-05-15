@@ -50,7 +50,7 @@ while(temp!=null)
 
         ListNode tempA = headA;
         ListNode tempB = headB;
-
+/*
         while(tempA!=null && tempB !=null)
         {
             if(tempA==tempB)
@@ -58,8 +58,14 @@ while(temp!=null)
             tempA=tempA.next;
             tempB=tempB.next;
         }
+*/
 
-    return null;
+    while(tempA!=tempB)
+    {
+         tempA=tempA.next;
+        tempB=tempB.next;
+    }
+    return tempA;
     }
 
 
