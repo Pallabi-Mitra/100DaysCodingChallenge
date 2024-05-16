@@ -16,9 +16,73 @@ class Node {
 class Solution {
     public Node copyRandomList(Node head) {
 
+insertCopyNodeInBetween(head);
+connectRandomPointers(head);
+return getCopyList(head);
+
+
+        }
+
+    
+
+
+public void insertCopyNodeInBetween(Node head)
+{
+        
+        Node temp = head;
+// insert nodes in between
+        while(temp!=null)
+        {
+
+           Node copyNode = new Node(temp.val);
+           // insert new node in between 2 nodes
+           copyNode.next = temp.next;
+           temp.next=copyNode;
+           temp = temp.next.next; // to jump the copy node
+
+        }
+}
+
+// connect random pointers
+
+public void connectRandomPointers(Node head)
+{
+       Node temp = head;
+    while(temp!=null)
+    {
+
+      Node  copyNode = temp.next;
+        if(temp.random!=null)
+        copyNode.random=temp.random.next;
+        else copyNode.random = null;
+        temp=temp.next.next;
+
+    }
+}
+
+public Node getCopyList(Node head)
+{
+        // connecting the next pointer
+
+    Node dummyNode = new Node(-1);
+    Node res = dummyNode;
+    Node temp=head;
+    while(temp!=null)
+    {
+        res.next=temp.next;//
+        temp.next=temp.next.next;//point to the actual next node
+        res=res.next;
+        temp=temp.next;
+    }
+
+return dummyNode.next;
+    }
+
+
+  }
         // Hashing :
 
-        // create all copies of nodes :
+        
 /*
         HashMap<Node,Node> mpp = new HashMap<>();
 
@@ -31,18 +95,18 @@ class Solution {
             temp=temp.next;
         }
 
-        temp=head;
+        Node t=head;
 
-        while(temp!=null)
+        while(t!=null)
         {
-            Node copyNode = mpp.get(temp);
+            Node copyNode = mpp.get(t);
 
-            //copyNode.next=temp.next;
-            //copyNode.random = temp.random;
+           // copyNode.next=temp.next;
+           // copyNode.random = temp.random;
 
-            copyNode.next=(temp.next!=null)?mpp.get(temp.next):null;
-            copyNode.next=(temp.random!=null)?mpp.get(temp.random):null;
-            temp=temp.next;
+            copyNode.next=(t.next!=null)?mpp.get(t.next):null;
+            copyNode.next=(t.random!=null)?mpp.get(t.random):null;
+            t=t.next;
 
 
         }
@@ -54,6 +118,7 @@ class Solution {
 }
 
 */
+/*
     HashMap<Node,Node> hashMap=new HashMap<>();
     Node temp = head;
 //first iteration for inserting deep nodes of every node in the hashmap.
@@ -70,6 +135,8 @@ class Solution {
         node.random = (t.random != null) ? hashMap.get(t.random):null;
         t = t.next;
     }
-    return hashMap.get(head);
+    return hashMap.get(head); // the copy of the head node is returned, which is the new 
+    //head of LL
 }
 }
+*/
