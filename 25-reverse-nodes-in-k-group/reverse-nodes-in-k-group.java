@@ -58,6 +58,10 @@ class Solution {
 
                  break;
             }
+            else
+            {
+
+            
         
 
             ListNode nextNode = kThNode.next; // make the next node of kth as next
@@ -75,6 +79,7 @@ class Solution {
             }
             prevLast=temp; // Kthnod
             temp = nextNode;// move the temp to start new cycle
+            }
 
         }
 
