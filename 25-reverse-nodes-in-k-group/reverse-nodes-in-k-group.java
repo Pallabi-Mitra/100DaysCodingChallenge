@@ -30,8 +30,9 @@ class Solution {
     public ListNode getKthNode(ListNode temp, int k)
     {
         // traversing till the Kth node, returning that node
-       k-=1;
-        while(temp!=null && k>0)
+       k-=1;// head is passed, traversing after that
+      
+        while(temp!=null && k>0 )
         {
             k--;
             temp=temp.next;
@@ -42,16 +43,16 @@ class Solution {
 
         ListNode temp = head;
 
-        ListNode prevLast = null;
+        ListNode prevLast = null; // to store the previous node
 
         while(temp!=null)
         {
-            ListNode kThNode = getKthNode(temp,k);
-            if(kThNode == null)
+            ListNode kThNode = getKthNode(temp,k); // get the Kth node
+            if(kThNode == null) // no Kth node present
             {
-                if(prevLast!=null)
+                if(prevLast!=null) // if prev is not null, like in case of 1 node or 2 node LL
                 {
-                 prevLast.next=temp;
+                 prevLast.next=temp; // make the rest nodes point to get them attached
                 
                 }
 
@@ -59,10 +60,10 @@ class Solution {
             }
         
 
-            ListNode nextNode = kThNode.next;
-            kThNode.next=null;
+            ListNode nextNode = kThNode.next; // make the next node of kth as next
+            kThNode.next=null; // make the Kth node next null, to end the Kth LL
 
-            reverseLinkedList(temp);
+            reverseLinkedList(temp); // reverse LL, it has the head of reversed LL, = Kth Node
 
             if(temp==head) // first group, first time traversal// upon reverse
             {
@@ -70,14 +71,14 @@ class Solution {
             }
             else
             {
-                prevLast.next=kThNode;
+                prevLast.next=kThNode; // make previous point to 
             }
-            prevLast=temp;
-            temp = nextNode;
+            prevLast=temp; // Kthnod
+            temp = nextNode;// move the temp to start new cycle
 
         }
 
-        return head;
+        return head; // reversed joined LL
         
     }
 }
