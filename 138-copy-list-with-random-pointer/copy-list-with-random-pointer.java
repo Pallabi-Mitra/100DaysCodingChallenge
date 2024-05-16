@@ -25,19 +25,19 @@ return getCopyList(head);
 
     
 
-
+// insert nodes in between
 public void insertCopyNodeInBetween(Node head)
 {
         
         Node temp = head;
-// insert nodes in between
+
         while(temp!=null)
         {
 
-           Node copyNode = new Node(temp.val);
+           Node copyNode = new Node(temp.val); // cretaing the new node with just temp value
            // insert new node in between 2 nodes
-           copyNode.next = temp.next;
-           temp.next=copyNode;
+           copyNode.next = temp.next; // linking it with the temp
+           temp.next=copyNode; // linking it with the next node of temp
            temp = temp.next.next; // to jump the copy node
 
         }
@@ -51,11 +51,12 @@ public void connectRandomPointers(Node head)
     while(temp!=null)
     {
 
-      Node  copyNode = temp.next;
-        if(temp.random!=null)
-        copyNode.random=temp.random.next;
-        else copyNode.random = null;
-        temp=temp.next.next;
+      Node copyNode = temp.next;
+        if(temp.random!=null) // if there is a random pointer of temp
+        copyNode.random=temp.random.next; // make the copy node random point to the copy node only, so it will go via the temmp node....the node
+        else copyNode.random = null; 
+        // if no random it points to null like the temp random points
+        temp=temp.next.next; // again temp skips two nodes
 
     }
 }
