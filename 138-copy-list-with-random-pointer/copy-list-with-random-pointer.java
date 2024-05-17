@@ -53,7 +53,7 @@ public void connectRandomPointers(Node head)
 
       Node copyNode = temp.next;
         if(temp.random!=null) // if there is a random pointer of temp
-        copyNode.random=temp.random.next; // make the copy node random point to the copy node only, so it will go via the temmp node....the node
+        copyNode.random=temp.random.next; // make the copy node random point to the copy node only, so it will go via the temmp node....temp.random.next== copyNode only data 
         else copyNode.random = null; 
         // if no random it points to null like the temp random points
         temp=temp.next.next; // again temp skips two nodes
@@ -65,14 +65,17 @@ public Node getCopyList(Node head)
 {
         // connecting the next pointer
 
-    Node dummyNode = new Node(-1);
+    Node dummyNode = new Node(-1); // creating a LL
     Node res = dummyNode;
     Node temp=head;
-    while(temp!=null)
+    while(temp!=null) // iterating over the original LLL
     {
-        res.next=temp.next;//
+        res.next=temp.next;
+        // getting res to the first copyNode( the start of the new cloned LL)
+        // the res connects the new nodes of the cloned LL one by one
         temp.next=temp.next.next;//point to the actual next node
-        res=res.next;
+        // the original LL restores its connections
+        res=res.next; // res becomes the first node of the cloned LL
         temp=temp.next;
     }
 
