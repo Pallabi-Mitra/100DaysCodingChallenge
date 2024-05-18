@@ -43,7 +43,7 @@ int min;
 }
 */
 // Linked - list
-/*
+
 class MinStack {
     class Node {
         int val;
@@ -64,8 +64,17 @@ class MinStack {
     }
 
     public void push(int val) {
-        int min = head == null ? val : Math.min(val, head.min);
-        head = new Node(val, min, head);
+
+      //  int min = head == null ? val : Math.min(val, head.min);
+       // head = new Node(val, min, head);
+       int min;
+        if (head == null) {
+            min = val;
+        } else {
+            min = Math.min(val, head.min);
+        }
+        Node newNode = new Node(val, min, head);
+        head=newNode;
     }
 
     public void pop() {
@@ -80,7 +89,8 @@ class MinStack {
         return head.min;
     }
 }
-*/
+
+/* SC : O(1)
 class MinStack {
     private Stack<Long> stack;
     private long min;
@@ -124,7 +134,7 @@ class MinStack {
         return (int)min;
     }
 }
-
+*/
 /**
  * Your MinStack object will be instantiated and called as such:
  * MinStack obj = new MinStack();
