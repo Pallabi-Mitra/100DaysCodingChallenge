@@ -9,7 +9,9 @@ class Solution {
         
         for (int i = 0; i < n; i++) {
             while (top >= 0 && temperatures[i] > temperatures[stack[top]]) {
-                int index = stack[top--]; // Pop the top element from the stack
+               // int index = stack[top--]; // Pop the top element from the stack
+               int index = stack[top];
+               top--;
                 result[index] = i - index; // Calculate the days until a warmer temperature
             }
          //   stack[++top] = i; // Push the current index onto the stack
