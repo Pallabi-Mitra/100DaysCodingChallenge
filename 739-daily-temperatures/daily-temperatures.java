@@ -14,7 +14,7 @@ class Solution {
 
         return result;
         */
-        /*
+        
          int n = temperatures.length;
         int[] result = new int[n];
         int[] stack = new int[n]; // Using array as a stack
@@ -29,23 +29,8 @@ class Solution {
         }
         
         return result;
-        */
-        int n = temperatures.length;
-        int[] result = new int[n];
-        int[] nextWarm = new int[101]; // Store the index of the next warmer temperature
         
-        for (int i = n - 1; i >= 0; i--) {
-            int minDays = Integer.MAX_VALUE;
-            for (int j = temperatures[i] + 1; j <= 100; j++) {
-                if (nextWarm[j] != 0) {
-                    minDays = Math.min(minDays, nextWarm[j] - i);
-                }
-            }
-            result[i] = (minDays == Integer.MAX_VALUE) ? 0 : minDays;
-            nextWarm[temperatures[i]] = i; // Update the index of the next warmer temperature
-        }
         
-        return result;
         
     }
 }
