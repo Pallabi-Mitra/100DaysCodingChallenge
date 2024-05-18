@@ -65,8 +65,9 @@ class MinStack {
 
     public void push(int val) {
 
-      //  int min = head == null ? val : Math.min(val, head.min);
-       // head = new Node(val, min, head);
+        int min = head == null ? val : Math.min(val, head.min);
+        head = new Node(val, min, head);
+        /*
        int min;
         if (head == null) {
             min = val;
@@ -74,6 +75,7 @@ class MinStack {
             min = Math.min(val, head.min);
         }
        head = new Node(val, min, head);
+       */
       
     }
 
