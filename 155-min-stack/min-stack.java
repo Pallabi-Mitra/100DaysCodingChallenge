@@ -73,8 +73,8 @@ class MinStack {
         } else {
             min = Math.min(val, head.min);
         }
-        Node newNode = new Node(val, min, head);
-        head=newNode;
+       head = new Node(val, min, head);
+      
     }
 
     public void pop() {
