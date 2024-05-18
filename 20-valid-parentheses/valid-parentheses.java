@@ -18,15 +18,16 @@ class Solution {
         // when recieved closing bracket its corresponding  open bracket should be present next in stack. If not present we return false
                    if((c==')' && top!='(') || (c=='}' && top!='{') || (c==']' && top!='['))
                         return false;
+
+                     
                 }
         }
-/*
-        if(st.isEmpty())
-            return true;
-        else
-            return false;
-*/
-return st.isEmpty();
+
+        return(st.isEmpty());
+           
+       
+
+
 
         
     }
