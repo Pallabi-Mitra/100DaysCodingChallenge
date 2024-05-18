@@ -14,7 +14,7 @@ class Solution {
 
         return result;
         */
-        int n = temperatures.length;
+      int n = temperatures.length;
         int[] result = new int[n];
         Deque<Integer> stack = new ArrayDeque<>();
 
