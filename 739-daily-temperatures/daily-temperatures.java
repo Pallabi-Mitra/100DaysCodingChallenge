@@ -1,19 +1,6 @@
 class Solution {
     public int[] dailyTemperatures(int[] temperatures) {
-        /*
-        int[] result = new int[temperatures.length];
-        Stack<Integer> stack = new Stack<>();
-
-        for (int i = 0; i < temperatures.length; i++) {
-            while (!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) {
-                int index = stack.pop();
-                result[index] = i - index;
-            }
-            stack.push(i);
-        }
-
-        return result;
-        */
+        
         
          int n = temperatures.length;
         int[] result = new int[n];
@@ -25,7 +12,10 @@ class Solution {
                 int index = stack[top--]; // Pop the top element from the stack
                 result[index] = i - index; // Calculate the days until a warmer temperature
             }
-            stack[++top] = i; // Push the current index onto the stack
+         //   stack[++top] = i; // Push the current index onto the stack
+         top++;
+         stack[top] = i;
+         
         }
         
         return result;
