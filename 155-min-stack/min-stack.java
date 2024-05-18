@@ -2,9 +2,14 @@ class MinStack {
 
 Stack<Integer> stack;
 int min;
+ 
+      
     public MinStack() {
-        stack = new Stack<>();
-        min = Integer.MAX_VALUE; 
+       
+    
+
+    stack = new Stack<>();
+    min = Integer.MAX_VALUE;
     }
     
     public void push(int val) {
@@ -20,7 +25,7 @@ int min;
     public void pop() {
          if(stack.pop()==min)
             min=stack.pop();
-        // stack.pop();
+        
         
     }
     
