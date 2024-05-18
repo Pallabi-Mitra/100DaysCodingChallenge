@@ -20,12 +20,13 @@ class Solution {
                         return false;
                 }
         }
-
+/*
         if(st.isEmpty())
             return true;
         else
             return false;
-
+*/
+return st.isEmpty();
 
         
     }
