@@ -1,7 +1,7 @@
 class Solution {
-    public int[] dailyTemperatures(int[] temps) {
+    public int[] dailyTemperatures(int[] temperatures) {
 
-      /* 
+      
 
        
         int n = temperatures.length; // length of array
@@ -28,8 +28,8 @@ class Solution {
         return result;
          }
 }
-      */
       
+      /*
         int[] results = new int[temps.length];
         Stack<Integer> stack = new Stack<>();
         
@@ -43,7 +43,7 @@ class Solution {
         return results;
     }
 }  
-        
+     */   
         /* Bruteforce : O(n2)
 
 
