@@ -1,35 +1,15 @@
 class Solution {
     public int[] dailyTemperatures(int[] temperatures) {
 
-/*
-        int n = temperatures.length; // length of array
-        int[] result = new int[n]; // will have the days
-        Stack<Integer> stack = new Stack<>();
-       
-        
-        for (int i = 0; i < n; i++) { // looping for all the temp given in the array
-            while (!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) { 
-               
-               int index = stack.peek(); 
-              result[index] = i - index; 
-                
-            }
-        
-         stack.push(i);
-         
-        }
-        
-        return result;
-         }
-}
-*/
+ //Decreasing Monotonic Stack 
+
     int n = temperatures.length;
         int[] result = new int[n];
         Stack<Integer> stack = new Stack<>();
 
         for (int i = 0; i < n; i++) {
             // Check for a warmer temperature and update the result
-            while (!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) {
+            while (!stack.isEmpty() && temperatures[stack.peek()]<temperatures[i]) {
                 int index = stack.pop();
                 result[index] = i - index;
             }
@@ -95,7 +75,7 @@ class Solution {
          }
 }
 */
-    
+  /*  
      
         /* Bruteforce : O(n2)
 
