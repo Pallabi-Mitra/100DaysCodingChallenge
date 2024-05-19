@@ -50,6 +50,7 @@ class Solution {
 
 
  */
+ /*
 
  Map<Integer, Integer> nextGreaterMap = new HashMap<>();
         Stack<Integer> stack = new Stack<>();
@@ -69,6 +70,24 @@ class Solution {
         }
 
         return result;
-           
+    */
+    Map<Integer, Integer> nextGreaterMap = new HashMap<>();
+        Stack<Integer> stack = new Stack<>();
+
+        // Traverse nums2 to build the next greater element map
+        for (int num : nums2) {
+            while (!stack.isEmpty() && stack.peek() < num) {
+                nextGreaterMap.put(stack.pop(), num);
+            }
+            stack.push(num);
+        }
+
+        // Fill the result array for nums1 using the next greater element map
+        int[] result = new int[nums1.length];
+        for (int i = 0; i < nums1.length; i++) {
+            result[i] = nextGreaterMap.getOrDefault(nums1[i], -1);
+        }
+
+        return result;       
     }
 }
