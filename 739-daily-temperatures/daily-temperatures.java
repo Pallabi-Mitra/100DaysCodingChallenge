@@ -1,9 +1,35 @@
 class Solution {
-    public int[] dailyTemperatures(int[] temperatures) {
+    public int[] dailyTemperatures(int[] nums) {
 
-      
+ // Increasing Monotonic :
 
+        int n = nums.length; // length of array
+        int[] result = new int[n]; // will have the days
+       Stack<Integer> stack = new Stack<>();
+
+       for(int i = n-1;i>=0;i--)
+       {
+
+        while(!stack.isEmpty() && nums[stack.peek()]<=nums[i])
+        {
+            stack.pop();
+        }
+
+        if(stack.isEmpty()==false)
+        {
+            result[i]= stack.peek()-i;
+        }
        
+       
+        stack.push(i);
+       }
+       return result;
+       }
+    }
+
+
+   // Decreasing Monotonic Stack 
+   /*    
         int n = temperatures.length; // length of array
         int[] result = new int[n]; // will have the days
         int[] stack = new int[n]; // Using array as a stack
@@ -28,22 +54,9 @@ class Solution {
         return result;
          }
 }
-      
-      /*
-        int[] results = new int[temps.length];
-        Stack<Integer> stack = new Stack<>();
-        
-        for (int i = 0; i < temps.length; i++) {
-            while (!stack.isEmpty() && temps[stack.peek()] < temps[i]) {
-                results[stack.peek()] = i - stack.pop();
-            }
-            stack.push(i);
-        }
-
-        return results;
-    }
-}  
-     */   
+*/
+    
+     
         /* Bruteforce : O(n2)
 
 
