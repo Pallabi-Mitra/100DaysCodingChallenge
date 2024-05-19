@@ -1,8 +1,8 @@
 class Solution {
-    public int[] dailyTemperatures(int[] nums) {
+    public int[] dailyTemperatures(int[] temperatures) {
 
  // Increasing Monotonic :
-
+/*
         int n = nums.length; // length of array
         int[] result = new int[n]; // will have the days
        Stack<Integer> stack = new Stack<>();
@@ -26,10 +26,10 @@ class Solution {
        return result;
        }
     }
-
+*/
 
    // Decreasing Monotonic Stack 
-   /*    
+    
         int n = temperatures.length; // length of array
         int[] result = new int[n]; // will have the days
         int[] stack = new int[n]; // Using array as a stack
@@ -54,7 +54,7 @@ class Solution {
         return result;
          }
 }
-*/
+
     
      
         /* Bruteforce : O(n2)
