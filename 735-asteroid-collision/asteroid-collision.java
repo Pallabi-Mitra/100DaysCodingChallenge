@@ -20,7 +20,7 @@ for(int i = 0;i<n;i++)
             a[i]=0;
         else
         {
-                a[i]=0;
+            a[i]=0;
             st.pop();
         }
             
