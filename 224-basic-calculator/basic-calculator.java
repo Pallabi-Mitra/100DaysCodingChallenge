@@ -1,11 +1,9 @@
 class Solution {
    
 
-    public int calculate(String s) {
-        return calculateRecursively(s);
-    }
     
-    private int calculateRecursively(String s) {
+    
+    public int calculate(String s) {
         int num = 0;
         int sign = 1;
         int result = 0;
