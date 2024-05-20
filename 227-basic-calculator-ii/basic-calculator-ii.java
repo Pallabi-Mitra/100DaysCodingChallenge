@@ -46,42 +46,55 @@ class Solution {
 
    // Optimal : Single pass
       
-        int result = 0;
-        int lastNumber = 0;
-        int currentNumber = 0;
-        char operation = '+';
+        // Initialize variables to keep track of the result, last number, current number, and current operation.
+int result = 0;
+int lastNumber = 0;
+int currentNumber = 0;
+char operation = '+'; // Default operation is addition.
         
-        for (int i = 0; i < s.length(); i++) {
-            char currentChar = s.charAt(i);
-            
-            if (Character.isDigit(currentChar)) {
-                currentNumber = currentNumber * 10 + (currentChar - '0');
-            }
-            
-            if (!Character.isDigit(currentChar) && !Character.isWhitespace(currentChar) || i == s.length() - 1) {
-                if (operation == '+') {
-                    result += lastNumber;
-                    lastNumber = currentNumber;
-                } else if (operation == '-') {
-                    result += lastNumber;
-                    lastNumber = -currentNumber;
-                } else if (operation == '*') {
-                    lastNumber = lastNumber * currentNumber;
-                } else if (operation == '/') {
-                    lastNumber = lastNumber / currentNumber;
-                }
-                
-                operation = currentChar;
-                currentNumber = 0;
-            }
+// Iterate through each character of the input string.
+for (int i = 0; i < s.length(); i++) {
+    // Get the current character at index 'i'.
+    char currentChar = s.charAt(i);
+    
+    // Check if the current character is a digit.
+    if (Character.isDigit(currentChar)) {
+        // If it's a digit, update the current number by appending the digit.
+        currentNumber = currentNumber * 10 + (currentChar - '0');
+    }
+    
+    // Check if the current character is not a digit and not a whitespace,
+    // or if it's the last character of the string.
+    if (!Character.isDigit(currentChar) && !Character.isWhitespace(currentChar) || i == s.length() - 1) {
+        // Process the pending operation based on the last operation encountered.
+        if (operation == '+') {
+            result += lastNumber; // Add lastNumber to result.
+            lastNumber = currentNumber; // Update lastNumber with currentNumber.
+        } else if (operation == '-') {
+            result += lastNumber; // Add lastNumber to result.
+            lastNumber = -currentNumber; // Update lastNumber with negative value of currentNumber.
+        } else if (operation == '*') {
+            lastNumber = lastNumber * currentNumber; // Perform multiplication.
+        } else if (operation == '/') {
+            lastNumber = lastNumber / currentNumber; // Perform division.
         }
         
-        result += lastNumber;
-        return result;
+        // Update the current operation with the current character.
+        operation = currentChar;
+        // Reset the current number for the next number.
+        currentNumber = 0;
     }
 }
 
-   
+// Add the lastNumber (which might be the result of the last operation) to the final result.
+result += lastNumber;
+// Return the final result.
+return result;
+
+    }
+}
+
+
 
    
 //Brute force : Using 2 ArrayList
