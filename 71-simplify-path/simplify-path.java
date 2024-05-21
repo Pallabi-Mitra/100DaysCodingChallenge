@@ -2,7 +2,6 @@ class Solution {
     public String simplifyPath(String path) {
 
 // Using Stack :
-/*
       Stack<String> stack = new Stack<>();
         String[] components = path.split("/");
 
@@ -27,7 +26,10 @@ class Solution {
 
     }
 }
-*/
+
+
+
+
 // Using Deque :
 /*
  Deque<String> deque = new ArrayDeque<>();
@@ -53,25 +55,3 @@ class Solution {
 }
 */
 
-// Using LinkedList :
- LinkedList<String> list = new LinkedList<>();
-        String[] components = path.split("/");
-
-        for (String component : components) {
-            if (component.equals("..")) {
-                if (!list.isEmpty()) {
-                    list.removeLast();
-                }
-            } else if (!component.isEmpty() && !component.equals(".")) {
-                list.addLast(component);
-            }
-        }
-
-        StringBuilder simplifiedPath = new StringBuilder();
-        for (String dir : list) {
-            simplifiedPath.append("/").append(dir);
-        }
-
-        return simplifiedPath.length() > 0 ? simplifiedPath.toString() : "/";
-    }
-}
