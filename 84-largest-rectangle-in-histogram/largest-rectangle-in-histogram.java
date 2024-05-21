@@ -2,10 +2,66 @@ class Solution {
     public int largestRectangleArea(int[] heights) {
         
 
+// Most Optimal : 
 
-        // Using 2 arrays and 1 stack :
+ Stack<Integer> stack = new Stack<>();
+        int maxArea = 0;
+        int n = heights.length;
+  
+        for (int i = 0; i <= n; i++) {
+
+            while (!stack.isEmpty() && (i==n || heights[stack.peek()]>=heights[i])) {
+                int height = heights[stack.peek()];
+                stack.pop();
+                int width;
+                if(stack.isEmpty()) width= i;
+                else width = i- stack.peek() - 1;
+                maxArea = Math.max(maxArea, height * width);
+            }
+            stack.push(i);
+        }
+        return maxArea;
+    }
+}
 
 
+/* Fastest : 
+        int n = heights.length;
+        int[] left = new int[n];
+        int[] right = new int[n];
+        // left[0] 和 right[n - 1] 會是 -1
+
+        for(int i = 0; i < n; i++) {
+            int j = i - 1;
+            while(j >= 0 && heights[j] >= heights[i]) {
+                j = left[j];
+            }
+            left[i] = j;
+        }
+
+        for(int i = n - 1; i >= 0; i--) {
+            int j = i + 1;
+            while(j < n && heights[i] <= heights[j]) {
+                j = right[j];
+            }
+            right[i] = j;
+        }
+
+        int maxArea = 0;
+        for(int i = 0; i < n; i++) {
+            int curArea = heights[i] * (right[i] - left[i] - 1);
+            maxArea = Math.max(maxArea, curArea);
+        }
+        
+        return maxArea;
+    }
+}
+*/
+
+
+ //Better Approach :  Using 2 arrays and 1 stack :
+
+/*
         int n =heights.length;
 
         Stack<Integer> st = new Stack<>();
@@ -72,8 +128,7 @@ class Solution {
 
     }
 }
-
-
+*/
 
 // Bruteforce - TLE
 /*
@@ -91,58 +146,5 @@ class Solution {
         return maxArea;
     }
 
-}
-*/
-/*
- Stack<Integer> stack = new Stack<>();
-        int maxArea = 0;
-        int n = heights.length;
-  
-        for (int i = 0; i <= n; i++) {
-            while (!stack.isEmpty() && (i==n || heights[stack.peek()]>=heights[i])) {
-                int height = heights[stack.peek()];
-                stack.pop();
-                int width;
-                if(stack.isEmpty()) width= i;
-                else width = i- stack.peek() - 1;
-                maxArea = Math.max(maxArea, height * width);
-            }
-            stack.push(i);
-        }
-        return maxArea;
-    }
-}
-*/
-
-/*
-        int n = heights.length;
-        int[] left = new int[n];
-        int[] right = new int[n];
-        // left[0] 和 right[n - 1] 會是 -1
-
-        for(int i = 0; i < n; i++) {
-            int j = i - 1;
-            while(j >= 0 && heights[j] >= heights[i]) {
-                j = left[j];
-            }
-            left[i] = j;
-        }
-
-        for(int i = n - 1; i >= 0; i--) {
-            int j = i + 1;
-            while(j < n && heights[i] <= heights[j]) {
-                j = right[j];
-            }
-            right[i] = j;
-        }
-
-        int maxArea = 0;
-        for(int i = 0; i < n; i++) {
-            int curArea = heights[i] * (right[i] - left[i] - 1);
-            maxArea = Math.max(maxArea, curArea);
-        }
-        
-        return maxArea;
-    }
 }
 */
