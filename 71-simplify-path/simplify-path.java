@@ -29,7 +29,7 @@ class Solution {
 }
 */
 // Using Deque :
-
+/*
  Deque<String> deque = new ArrayDeque<>();
         String[] components = path.split("/");
 
@@ -50,4 +50,28 @@ class Solution {
 
         return simplifiedPath.length() > 0 ? simplifiedPath.toString() : "/";
     }
+}
+*/
+
+// Using LinkedList :
+ LinkedList<String> list = new LinkedList<>();
+        String[] components = path.split("/");
+
+        for (String component : components) {
+            if (component.equals("..")) {
+                if (!list.isEmpty()) {
+                    list.removeLast();
+                }
+            } else if (!component.isEmpty() && !component.equals(".")) {
+                list.addLast(component);
+            }
+        }
+
+        StringBuilder simplifiedPath = new StringBuilder();
+        for (String dir : list) {
+            simplifiedPath.append("/").append(dir);
+        }
+
+        return simplifiedPath.length() > 0 ? simplifiedPath.toString() : "/";
     }
+}
