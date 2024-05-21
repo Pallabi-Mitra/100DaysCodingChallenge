@@ -3,60 +3,66 @@ class Solution {
         
 
 // Most Optimal : 
-
+/*
  Stack<Integer> stack = new Stack<>();
         int maxArea = 0;
         int n = heights.length;
   
         for (int i = 0; i <= n; i++) {
-
+// calculate the width of the greater stack element before popping it
             while (!stack.isEmpty() && (i==n || heights[stack.peek()]>=heights[i])) {
                 int height = heights[stack.peek()];
                 stack.pop();
                 int width;
-                if(stack.isEmpty()) width= i;
+            if(stack.isEmpty()) width= i; // if nothing is left smaller its 0, complete width
                 else width = i- stack.peek() - 1;
+                 // Right smaller - Left Smaller - 1 gives width
                 maxArea = Math.max(maxArea, height * width);
             }
-            stack.push(i);
+            stack.push(i); // psuh the elements
         }
         return maxArea;
     }
 }
+*/
 
-
-/* Fastest : 
+// Fastest : 
         int n = heights.length;
         int[] left = new int[n];
         int[] right = new int[n];
-        // left[0] 和 right[n - 1] 會是 -1
-
+       
+// Left Array 
         for(int i = 0; i < n; i++) {
             int j = i - 1;
             while(j >= 0 && heights[j] >= heights[i]) {
+                // get the hightest for each in left
                 j = left[j];
             }
             left[i] = j;
         }
 
+// Right Array 
+
         for(int i = n - 1; i >= 0; i--) {
             int j = i + 1;
             while(j < n && heights[i] <= heights[j]) {
-                j = right[j];
+                j = right[j]; // get the hightest for each in right
             }
             right[i] = j;
         }
 
+// Calculate Area 
+
         int maxArea = 0;
         for(int i = 0; i < n; i++) {
-            int curArea = heights[i] * (right[i] - left[i] - 1);
+            int curArea = heights[i] * (right[i] - left[i] - 1); // height * width block
             maxArea = Math.max(maxArea, curArea);
         }
         
         return maxArea;
     }
 }
-*/
+
 
 
  //Better Approach :  Using 2 arrays and 1 stack :
