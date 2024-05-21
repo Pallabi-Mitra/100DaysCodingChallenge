@@ -4,7 +4,7 @@ class Solution {
 
 
         // Using 2 arrays and 1 stack :
-/*
+
 
         int n =heights.length;
 
@@ -73,7 +73,7 @@ class Solution {
     }
 }
 
-*/
+
 
 // Bruteforce - TLE
 /*
@@ -114,7 +114,7 @@ class Solution {
 }
 */
 
-
+/*
         int n = heights.length;
         int[] left = new int[n];
         int[] right = new int[n];
@@ -145,3 +145,4 @@ class Solution {
         return maxArea;
     }
 }
+*/
