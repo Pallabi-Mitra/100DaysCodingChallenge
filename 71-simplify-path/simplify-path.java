@@ -44,6 +44,7 @@ class Solution {
         return simplifiedPath.length() > 0 ? simplifiedPath.toString() : "/";
     
 */
+//This line of code constructs the simplified path by joining the elements of the stack with / as a delimiter and then prepending a / to ensure the path starts from the root directory.
 return "/" + String.join("/", stack);
     }
 }
