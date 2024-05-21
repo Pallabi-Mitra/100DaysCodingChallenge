@@ -4,7 +4,7 @@ class Solution {
 
 
         // Using 2 arrays and 1 stack :
-
+/*
 
         int n =heights.length;
 
@@ -70,5 +70,44 @@ class Solution {
 
 
 
+    }
+}
+
+*/
+
+// Bruteforce - TLE
+/*
+        int n = heights.length;
+        int maxArea = 0;
+
+        for (int i = 0; i < n; i++) {
+            int minHeight = Integer.MAX_VALUE;
+            for (int j = i; j < n; j++) {
+                minHeight = Math.min(minHeight, heights[j]);
+                int width = j - i + 1;
+                maxArea = Math.max(maxArea, minHeight * width);
+            }
+        }
+        return maxArea;
+    }
+
+}
+*/
+
+ Stack<Integer> stack = new Stack<>();
+        int maxArea = 0;
+        int n = heights.length;
+        int[] newHeights = new int[n + 2];
+        System.arraycopy(heights, 0, newHeights, 1, n);
+
+        for (int i = 0; i < newHeights.length; i++) {
+            while (!stack.isEmpty() && newHeights[i] < newHeights[stack.peek()]) {
+                int height = newHeights[stack.pop()];
+                int width = i - stack.peek() - 1;
+                maxArea = Math.max(maxArea, height * width);
+            }
+            stack.push(i);
+        }
+        return maxArea;
     }
 }
