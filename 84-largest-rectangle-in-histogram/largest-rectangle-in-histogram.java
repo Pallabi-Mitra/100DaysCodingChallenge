@@ -24,7 +24,10 @@ class Solution {
         return maxArea;
     }
 }
-*/
+
+
+*/ 
+//Fastest
 
         int n = heights.length; // Get the length of the heights array
         int[] left = new int[n]; // Array to store the index of the nearest smaller element to the left
@@ -33,21 +36,28 @@ class Solution {
         // Fill the left array
         for (int i = 0; i < n; i++) {
             int j = i - 1; // Start checking from the element to the left of i
-            while (j >= 0 && heights[j] >= heights[i]) {
-                // Move left to find the nearest smaller element
+            while (j >= 0 && heights[j] >= heights[i]) { // if greater
+                // Move more left to find the nearest smaller element
                 j = left[j];
             }
+        // if not greater that element index is the nearest smallest
             left[i] = j; // Store the index of the nearest smaller element
+
+            // -1 if unable to find,
         }
+
 
         // Fill the right array
         for (int i = n - 1; i >= 0; i--) {
             int j = i + 1; // Start checking from the element to the right of i
-            while (j < n && heights[i] <= heights[j]) {
-                // Move right to find the nearest smaller element
+            while (j < n && heights[i] <= heights[j]) { // if greater
+                // Move more right to find the nearest smaller element
                 j = right[j];
             }
+            // if no smaller found the present would be the smallest take that
             right[i] = j; // Store the index of the nearest smaller element
+
+            // n if unable to find
         }
 
         // Calculate the maximum area
