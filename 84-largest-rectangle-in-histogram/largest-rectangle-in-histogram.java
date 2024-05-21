@@ -26,40 +26,40 @@ class Solution {
 }
 */
 
-// Fastest : 
-        int n = heights.length;
-        int[] left = new int[n];
-        int[] right = new int[n];
+        int n = heights.length; // Get the length of the heights array
+        int[] left = new int[n]; // Array to store the index of the nearest smaller element to the left
+        int[] right = new int[n]; // Array to store the index of the nearest smaller element to the right
        
-// Left Array 
-        for(int i = 0; i < n; i++) {
-            int j = i - 1;
-            while(j >= 0 && heights[j] >= heights[i]) {
-                // get the hightest for each in left
+        // Fill the left array
+        for (int i = 0; i < n; i++) {
+            int j = i - 1; // Start checking from the element to the left of i
+            while (j >= 0 && heights[j] >= heights[i]) {
+                // Move left to find the nearest smaller element
                 j = left[j];
             }
-            left[i] = j;
+            left[i] = j; // Store the index of the nearest smaller element
         }
 
-// Right Array 
-
-        for(int i = n - 1; i >= 0; i--) {
-            int j = i + 1;
-            while(j < n && heights[i] <= heights[j]) {
-                j = right[j]; // get the hightest for each in right
+        // Fill the right array
+        for (int i = n - 1; i >= 0; i--) {
+            int j = i + 1; // Start checking from the element to the right of i
+            while (j < n && heights[i] <= heights[j]) {
+                // Move right to find the nearest smaller element
+                j = right[j];
             }
-            right[i] = j;
+            right[i] = j; // Store the index of the nearest smaller element
         }
 
-// Calculate Area 
-
+        // Calculate the maximum area
         int maxArea = 0;
-        for(int i = 0; i < n; i++) {
-            int curArea = heights[i] * (right[i] - left[i] - 1); // height * width block
+        for (int i = 0; i < n; i++) {
+            // Calculate the width of the rectangle
+            int curArea = heights[i] * (right[i] - left[i] - 1);
+            // Update maxArea if the current area is larger
             maxArea = Math.max(maxArea, curArea);
         }
         
-        return maxArea;
+        return maxArea; // Return the maximum area found
     }
 }
 
