@@ -3,7 +3,10 @@ class Solution {
 
 // Using Stack :
        // Step 1: Split the input path by '/'
+       // Split by / means : it will create separate strings in components array
+       // slashes will be replaced by empty strings
         String[] components = path.split("/");
+
         
         // Step 2: Initialize an empty stack to store valid directory names
         Stack<String> stack = new Stack<>();
@@ -12,10 +15,11 @@ class Solution {
         for (String component : components) {
             if (component.isEmpty() || component.equals(".")) {
                 // If the component is empty or '.', just skip it
-                continue;
+                continue; // dont consider these strings 
+
             } else if (component.equals("..")) {
                 // If the component is '..', go to the parent directory (pop from stack if not empty)
-                if (!stack.isEmpty()) {
+                if (!stack.isEmpty()) { // if have file before get there
                     stack.pop();
                 }
             } else {
@@ -26,15 +30,21 @@ class Solution {
         
         // Step 4: Join the components in the stack with '/' to form the simplified path
         // Use StringBuilder to efficiently build the resulting path
+        
+        /*
         StringBuilder simplifiedPath = new StringBuilder();
+        //Loops through each directory name (dir) in the stack.
+//For each dir, it appends "/" followed by the directory name to the simplifiedPath.
+// separates each strings by /
         for (String dir : stack) {
-            simplifiedPath.append("/").append(dir);
+            simplifiedPath.append("/").append(dir);// starts with slash
         }
         
         // If the stack is empty, the simplified path should be "/"
         return simplifiedPath.length() > 0 ? simplifiedPath.toString() : "/";
     
-
+*/
+return "/" + String.join("/", stack);
     }
 }
 
