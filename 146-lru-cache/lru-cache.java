@@ -1,4 +1,10 @@
-class Node { // define the DLL class
+
+
+// Using DLL and HashMap
+// HashMap stores : Key, Address of the node
+// DLL stores : Key,value
+class LRUCache {
+    class Node { // define the DLL class
     int key;
     int value; // 2 values
     Node prev,next; // reference pointers
@@ -9,11 +15,6 @@ class Node { // define the DLL class
         this.value=value;
     }
 }
-
-// Using DLL and HashMap
-// HashMap stores : Key, Address of the node
-// DLL stores : Key,value
-class LRUCache {
 
 // Create two nodes head and tail with key and value =0
 
