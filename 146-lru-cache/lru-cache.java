@@ -40,8 +40,8 @@ int capacity;
         {
             Node newNode = mpp.get(key); // get the value which store the node address from map
            // make new node equal to that node address
-            remove(newNode); // remove from dLL also from map
-            insert(newNode); // place next to head
+            remove(newNode); // remove from DLL also from map
+            insert(newNode); // place next to head, add to map
             return newNode.value;
         }
         else
@@ -70,7 +70,7 @@ int capacity;
     {
         mpp.remove(node.key); // remove the entry from map
 
-// remove the node from the middle, connect the other two nodes together
+// remove the node from the middle of DLL, connect the other two nodes together
         node.next.prev=node.prev;
         node.prev.next=node.next;
 
@@ -80,13 +80,15 @@ int capacity;
 
     private void insert(Node node) // adding after head
     {
-            mpp.put(node.key,node); // new entry in the node
+            mpp.put(node.key,node); // new entry of new node in map
 
+// take the next node after head
             Node headNext= head.next;
-
+//make head point to the new node
             head.next=node;
             node.prev=head;
-
+//make the new node point to the headnext, 
+// this way we insert the new node after head,making it MRU, and connecting it with DLL
             headNext.prev=node;
             node.next=headNext;
 
