@@ -31,7 +31,7 @@ class Solution {
         // Step 4: Join the components in the stack with '/' to form the simplified path
         // Use StringBuilder to efficiently build the resulting path
         
-        /*
+        
         StringBuilder simplifiedPath = new StringBuilder();
         //Loops through each directory name (dir) in the stack.
 //For each dir, it appends "/" followed by the directory name to the simplifiedPath.
@@ -43,9 +43,9 @@ class Solution {
         // If the stack is empty, the simplified path should be "/"
         return simplifiedPath.length() > 0 ? simplifiedPath.toString() : "/";
     
-*/
+
 //This line of code constructs the simplified path by joining the elements of the stack with / as a delimiter and then prepending a / to ensure the path starts from the root directory.
-return "/" + String.join("/", stack);
+//return "/" + String.join("/", stack);
     }
 }
 
