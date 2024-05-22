@@ -1,5 +1,5 @@
 
-
+/*
 public class LFUCache {
     private final int capacity; // Maximum capacity of the cache
     private int minFrequency; // Minimum frequency of any key in the cache
@@ -73,5 +73,110 @@ public class LFUCache {
         frequencyToKeys.computeIfAbsent(1, k -> new LinkedHashSet<>()).add(key);
         // Reset the minFrequency to 1 since we just added a new key with frequency 1
         minFrequency = 1;
+    }
+}
+*/
+
+
+public class LFUCache {
+    private final int capacity;
+    private int minFrequency;
+    private final Map<Integer, Node> keyToNode;
+    private final Map<Integer, DoublyLinkedList> frequencyToNodes;
+
+    // Node class to store key, value, and frequency
+    private static class Node {
+        int key, value, frequency;
+        Node prev, next;
+        Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+            this.frequency = 1;
+        }
+    }
+
+    // Doubly linked list class to store nodes
+    private static class DoublyLinkedList {
+        Node head, tail;
+        DoublyLinkedList() {
+            head = new Node(0, 0);
+            tail = new Node(0, 0);
+            head.next = tail;
+            tail.prev = head;
+        }
+
+        void addNode(Node node) {
+            Node nextNode = head.next;
+            head.next = node;
+            node.prev = head;
+            node.next = nextNode;
+            nextNode.prev = node;
+        }
+
+        void removeNode(Node node) {
+            Node prevNode = node.prev;
+            Node nextNode = node.next;
+            prevNode.next = nextNode;
+            nextNode.prev = prevNode;
+        }
+
+        boolean isEmpty() {
+            return head.next == tail;
+        }
+    }
+
+    public LFUCache(int capacity) {
+        this.capacity = capacity;
+        this.minFrequency = 0;
+        this.keyToNode = new HashMap<>();
+        this.frequencyToNodes = new HashMap<>();
+    }
+
+    public int get(int key) {
+        if (!keyToNode.containsKey(key)) {
+            return -1;
+        }
+        Node node = keyToNode.get(key);
+        updateNode(node);
+        return node.value;
+    }
+
+    public void put(int key, int value) {
+        if (capacity <= 0) {
+            return;
+        }
+        if (keyToNode.containsKey(key)) {
+            Node node = keyToNode.get(key);
+            node.value = value;
+            updateNode(node);
+            return;
+        }
+        if (keyToNode.size() >= capacity) {
+            DoublyLinkedList minFreqList = frequencyToNodes.get(minFrequency);
+            Node toEvict = minFreqList.tail.prev;
+            minFreqList.removeNode(toEvict);
+            keyToNode.remove(toEvict.key);
+            if (minFreqList.isEmpty()) {
+                frequencyToNodes.remove(minFrequency);
+            }
+        }
+        Node newNode = new Node(key, value);
+        keyToNode.put(key, newNode);
+        frequencyToNodes.computeIfAbsent(1, k -> new DoublyLinkedList()).addNode(newNode);
+        minFrequency = 1;
+    }
+
+    private void updateNode(Node node) {
+        int frequency = node.frequency;
+        DoublyLinkedList list = frequencyToNodes.get(frequency);
+        list.removeNode(node);
+        if (list.isEmpty()) {
+            frequencyToNodes.remove(frequency);
+            if (minFrequency == frequency) {
+                minFrequency++;
+            }
+        }
+        node.frequency++;
+        frequencyToNodes.computeIfAbsent(node.frequency, k -> new DoublyLinkedList()).addNode(node);
     }
 }
