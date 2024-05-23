@@ -1,8 +1,41 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
 
+// Optimized :  2 - pointers : doesnt work since array is getting sorted
+// can send boolean yes/no if pair exists or not
+/*
+ int n = nums.length;
+  int a[]=new int[2];
+ int left = 0;
+ int right = n-1;
+ Arrays.sort(nums);
+
+ while(left<right)
+ {
+    if(nums[left]+nums[right]==target)
+    {
+            a[0]= left;
+            a[1]=right;
+            return a;
+    }
+    else if(nums[left]+nums[right]>target)
+    {
+        right--;
+    }
+    else
+    {
+        left++;
+    }
+ }
+ return a;
+
+*/
+
+
+
 
         // Better Solution : Hashing
+
 
         HashMap<Integer,Integer> mpp = new HashMap<>();
 
@@ -28,5 +61,6 @@ class Solution {
 
 
         return a;
+        
     }
 }
