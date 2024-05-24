@@ -1,6 +1,8 @@
 class Solution {
     public boolean isSubsequence(String sub, String s1) {
 
+
+/*
     if (sub.length()<1)
             return true;
         char[] subb=sub.toCharArray();
@@ -18,13 +20,14 @@ class Solution {
     }
 }
 
-
+*/
 
 
 
 // Iterative Solution :
-/*
 
+if (sub.length()<1)
+            return true;
         int j = 0;
 
         for(int i = 0;i<s1.length() && j<sub.length();i++)
@@ -45,4 +48,3 @@ class Solution {
     }
 }
 
-*/
