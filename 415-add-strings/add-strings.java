@@ -15,8 +15,11 @@ StringBuilder result = new StringBuilder();
     while (i >= 0 || j >= 0 || carry > 0) {
         // Get the digit from num1 at index i, or 0 if i is out of bounds
         int digit1 = i >= 0 ? num1.charAt(i) - '0' : 0;
+      
         // Get the digit from num2 at index j, or 0 if j is out of bounds
         int digit2 = j >= 0 ? num2.charAt(j) - '0' : 0;
+
+       
         
         // Add digits along with carry
         int sum = digit1 + digit2 + carry;
