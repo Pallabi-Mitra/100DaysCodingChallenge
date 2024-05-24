@@ -2,8 +2,7 @@ class Solution {
     public boolean isPalindrome(String s) {
 
 
-
-
+// Optimal :
 
 if (s.isEmpty()) {
         	return true;
@@ -28,6 +27,7 @@ if (s.isEmpty()) {
         return true;
     }
 }
+
 
 // Using String Builder //
 
