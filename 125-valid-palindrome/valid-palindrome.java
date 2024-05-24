@@ -3,6 +3,35 @@ class Solution {
 
 
 
+
+
+if (s.isEmpty()) {
+        	return true;
+        }
+        int start = 0;
+        int last = s.length() - 1;
+        while(start <= last) {
+        	char currFirst = s.charAt(start);
+        	char currLast = s.charAt(last);
+        	if (!Character.isLetterOrDigit(currFirst )) {
+        		start++;
+        	} else if(!Character.isLetterOrDigit(currLast)) {
+        		last--;
+        	} else {
+        		if (Character.toLowerCase(currFirst) != Character.toLowerCase(currLast)) {
+        			return false;
+        		}
+        		start++;
+        		last--;
+        	}
+        }
+        return true;
+    }
+}
+
+// Using String Builder //
+
+/*
 StringBuilder sb = new StringBuilder();
 
     for(char ch : s.toCharArray()){
@@ -16,7 +45,7 @@ StringBuilder sb = new StringBuilder();
     return false;
     }
 }
-
+*/
 
 // 2-pointer approach :
 /*
