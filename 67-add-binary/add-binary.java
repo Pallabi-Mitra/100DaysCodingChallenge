@@ -1,11 +1,11 @@
 class Solution {
-    public String addBinary(String num1, String num2) {
+    public String addBinary(String a, String b) {
 
 
 
 
 
-
+/*
 StringBuilder result = new StringBuilder();
     int carry = 0;
     
@@ -41,15 +41,16 @@ StringBuilder result = new StringBuilder();
     return result.reverse().toString();
     }
 }
+*/
 // Optimal Approach :
-/*
+
 StringBuilder result = new StringBuilder(); // To store the result
         int carry = 0; // Initialize carry to 0
         int i = a.length() - 1; // Index for string a
         int j = b.length() - 1; // Index for string b
 
         // Iterate over both strings from end to start
-        while (i >= 0 || j >= 0) {
+        while (i >= 0 || j >= 0 || carry>0) {
             int sum = carry; // Start with carry
             
             // Add corresponding bit from string a if available
@@ -72,9 +73,9 @@ StringBuilder result = new StringBuilder(); // To store the result
         }
         
         // If there's a carry left, append it
-        if (carry != 0) {
-            result.append(carry);
-        }
+        //if (carry != 0) 
+            //result.append(carry);
+        
 
         // Reverse the result to get the correct order
         return result.reverse().toString();
@@ -85,7 +86,7 @@ StringBuilder result = new StringBuilder(); // To store the result
 
 }
 
-*/
+
 
 
 
