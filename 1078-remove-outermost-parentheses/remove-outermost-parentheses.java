@@ -1,19 +1,23 @@
 class Solution {
-    public String removeOuterParentheses(String S) {
+    public String removeOuterParentheses(String s) {
         
-        StringBuilder s = new StringBuilder();
-        int opened = 0;
-        for (char c : S.toCharArray()) {
-            // if (c == '(' && opened++ > 0) s.append(c);
-            // if (c == ')' && opened-- > 1) s.append(c);
-            if(c == '(') {
-                if(opened > 0) s.append(c);
-                opened++;
-            } else {
-                if(opened > 1) s.append(c);
-                opened--;
-            }
-        }
-        return s.toString();
+        // Initialize counter to keep track of the balance of parentheses
+    int count = 0;
+    // StringBuilder to construct the result string
+    StringBuilder result = new StringBuilder();
+    
+    // Iterate through each character in the input string
+    for (char c : s.toCharArray()) {
+        // If character is ')', decrement count first
+        if (c == ')') count--;
+        // If count is not zero, it means it's not an outer parenthesis
+        if (count > 0) result.append(c);
+        // If character is '(', increment count after processing
+        if (c == '(') count++;
+    }
+    
+    // Convert StringBuilder to String and return
+    return result.toString();
+
     }
 }
