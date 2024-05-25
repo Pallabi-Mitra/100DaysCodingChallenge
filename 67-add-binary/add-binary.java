@@ -22,11 +22,12 @@ StringBuilder result = new StringBuilder(); // To store the result
                 sum += b.charAt(j--) - '0'; // Convert char to int and add
             }
             
-            // Append the current bit (0 or 1) to the result
-            result.append(sum % 2); // sum % 2 gives the bit at the current position
             
             // Update the carry
             carry = sum / 2; // sum / 2 gives the carry
+            
+            // Append the current bit (0 or 1) to the result
+            result.append(sum % 2); // sum % 2 gives the bit at the current position
         }
         
         // If there's a carry left, append it
