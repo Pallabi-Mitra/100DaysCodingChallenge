@@ -26,10 +26,6 @@ StringBuilder result = new StringBuilder();
                 j--;
             }
 
-       
-        
-       
-        
         // Update carry for the next iteration
         carry = sum / 2;
         
