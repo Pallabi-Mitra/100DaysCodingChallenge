@@ -1,6 +1,5 @@
 class Solution {
     public String removeOuterParentheses(String s) {
-        
         // Initialize counter to keep track of the balance of parentheses
     int count = 0;
     // StringBuilder to construct the result string
@@ -18,6 +17,5 @@ class Solution {
     
     // Convert StringBuilder to String and return
     return result.toString();
-
-    }
+}
 }
