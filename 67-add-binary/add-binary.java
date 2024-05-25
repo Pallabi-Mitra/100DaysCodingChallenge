@@ -1,8 +1,48 @@
 class Solution {
-    public String addBinary(String a, String b) {
+    public String addBinary(String num1, String num2) {
 
+
+
+
+
+
+StringBuilder result = new StringBuilder();
+    int carry = 0;
+    
+    // Start adding digits from the least significant digit (rightmost)
+    int i = num1.length() - 1;
+    int j = num2.length() - 1;
+    
+    // Continue adding digits until both numbers are fully processed
+    while (i >= 0 || j >= 0 || carry > 0) {
+        // Get the digit from num1 at index i, or 0 if i is out of bounds
+        int digit1 = i >= 0 ? num1.charAt(i) - '0' : 0;
+      
+        // Get the digit from num2 at index j, or 0 if j is out of bounds
+        int digit2 = j >= 0 ? num2.charAt(j) - '0' : 0;
+
+       
+        
+        // Add digits along with carry
+        int sum = digit1 + digit2 + carry;
+        
+        // Update carry for the next iteration
+        carry = sum / 2;
+        
+        // Append the least significant digit of the sum to the result
+        result.append(sum % 2);
+        
+        // Move to the next digit towards more significant digit (left)
+        i--;
+        j--;
+    }
+    
+    // Reverse the result since we appended digits from least significant to most significant
+    return result.reverse().toString();
+    }
+}
 // Optimal Approach :
-
+/*
 StringBuilder result = new StringBuilder(); // To store the result
         int carry = 0; // Initialize carry to 0
         int i = a.length() - 1; // Index for string a
@@ -16,6 +56,7 @@ StringBuilder result = new StringBuilder(); // To store the result
             if (i >= 0) {
                 sum += a.charAt(i--) - '0'; // Convert char to int and add
             }
+            
             
             // Add corresponding bit from string b if available
             if (j >= 0) {
@@ -43,6 +84,9 @@ StringBuilder result = new StringBuilder(); // To store the result
 
 
 }
+
+*/
+
 
 
 
