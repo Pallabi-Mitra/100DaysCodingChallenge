@@ -1,7 +1,9 @@
 class Solution {
     public boolean wordPattern(String pattern, String s) {
 
+// Using Arrays : 
 
+/*
 // Split the input string `s` by spaces
     String[] words = s.split(" ");
     
@@ -39,3 +41,61 @@ class Solution {
     return true; // Pattern matches
 }
 }
+
+*/
+
+
+// Using two HashMaps :
+
+
+
+HashMap<Character,String> pw = new HashMap<>(); // pattern to word
+
+HashMap<String,Character> wp = new HashMap<>(); // word to pattern
+
+
+String arr[]= s.split(" ");
+
+if(arr.length!=pattern.length())
+return false;
+
+    for(int i = 0;i<pattern.length();i++)
+    {
+        char p = pattern.charAt(i);
+
+        String word = arr[i];
+
+        if(pw.containsKey(p)) // if key present
+        {
+// if the pattern character encountered doesnt match the same word            
+            if(!pw.get(p).equals(word)) 
+                return false;
+
+        }
+        else
+
+        pw.put(p,word); // pattern to word mapping
+
+// if word is present in map but mapped to different pattern character
+        if(wp.containsKey(word)) 
+        {
+            if(wp.get(word)!=p)
+            {
+                return false;
+            }
+
+        }
+        else
+        {
+            wp.put(word,p); // word to character of pattern matching
+        }
+
+    }
+    
+    return true; //pattern matches for all other cases
+}
+
+}
+
+
+
