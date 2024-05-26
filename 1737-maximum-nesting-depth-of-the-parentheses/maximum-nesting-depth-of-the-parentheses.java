@@ -1,6 +1,10 @@
 class Solution {
     public int maxDepth(String s) {
 
+
+// Using Stack :
+
+/*
         int count = 0;
         int maxi = -1;
 
@@ -26,5 +30,24 @@ class Solution {
        return maxi == -1 ? 0 : maxi;
 
         
+    }
+}
+*/
+
+int currentDepth = 0;
+    int maxDepth = 0;
+     for (char c : s.toCharArray()) {
+        if (c == '(') {
+            // Increase the depth
+            currentDepth++;
+            // Update the maximum depth
+            maxDepth = Math.max(maxDepth, currentDepth);
+        } else if (c == ')') {
+            // Decrease the depth
+            currentDepth--;
+        }
+    }
+
+    return maxDepth;
     }
 }
