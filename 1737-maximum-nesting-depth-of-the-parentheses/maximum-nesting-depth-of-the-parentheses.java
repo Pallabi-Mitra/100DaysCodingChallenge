@@ -4,7 +4,7 @@ class Solution {
 
 // Using Stack :
 
-
+/*
         int count = 0;
         int maxi = 0;
 
@@ -33,8 +33,7 @@ class Solution {
     }
 }
 
-
-/*
+*/
     int currentDepth = 0;
     int maxDepth = 0;
      for (char c : s.toCharArray()) {
@@ -52,4 +51,3 @@ class Solution {
     return maxDepth;
     }
 }
-*/
