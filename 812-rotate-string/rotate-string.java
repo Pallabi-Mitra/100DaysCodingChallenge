@@ -39,7 +39,7 @@ class Solution {
     }
 
    // public String shiftRight(String s){
-       // return s.CharAt(len1-1)+s.substring(0,len1-1);}
+       // return s.charAt(len1-1)+s.substring(0,len1-1);}
 
 
 }
