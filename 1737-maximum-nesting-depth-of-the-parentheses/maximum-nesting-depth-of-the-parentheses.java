@@ -4,9 +4,9 @@ class Solution {
 
 // Using Stack :
 
-/*
+
         int count = 0;
-        int maxi = -1;
+        int maxi = 0;
 
         Stack<Character> st = new Stack<>();
 
@@ -27,14 +27,15 @@ class Solution {
 
 
         }
-       return maxi == -1 ? 0 : maxi;
+       return maxi;
 
         
     }
 }
-*/
 
-int currentDepth = 0;
+
+/*
+    int currentDepth = 0;
     int maxDepth = 0;
      for (char c : s.toCharArray()) {
         if (c == '(') {
@@ -51,3 +52,4 @@ int currentDepth = 0;
     return maxDepth;
     }
 }
+*/
