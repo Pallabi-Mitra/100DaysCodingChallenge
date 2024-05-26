@@ -10,7 +10,7 @@ class Solution {
         HashMap<Character, String> a = new HashMap<>();
         
         // Split the input string `ss` by spaces to get individual words
-        String[] split_string = ss.split(" ", -1);
+        String[] split_string = ss.split(" ");
         
         // If the length of the pattern `s` is not equal to the number of words, return false
         if (s.length() != split_string.length) {
