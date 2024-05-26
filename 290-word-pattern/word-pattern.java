@@ -47,7 +47,7 @@ class Solution {
 
 // Using two HashMaps :
 
-
+/*
 
 HashMap<Character,String> pw = new HashMap<>(); // pattern to word
 
@@ -97,5 +97,50 @@ return false;
 
 }
 
+*/
 
 
+// Using HashMap and HashSet :
+
+ // Initialize a HashMap to store the mapping of characters to words
+        HashMap<Character, String> charToWord = new HashMap<>();
+        // Initialize a HashSet to store the words that have been mapped
+        HashSet<String> mappedWords = new HashSet<>();
+        
+        // Split the input string `s` by spaces to get individual words
+        String[] words = s.split(" ", -1);
+        
+        // If the length of the pattern `pattern` is not equal to the number of words, return false
+        if (pattern.length() != words.length) {
+            return false;
+        }
+        
+        // Iterate through each character in the pattern `pattern` and the corresponding word in `words`
+        for (int i = 0; i < pattern.length(); i++) {
+            char patternChar = pattern.charAt(i);
+            String word = words[i];
+            
+            // Check if the pattern character already has a mapping
+            if (charToWord.containsKey(patternChar)) {
+                // If the current word does not match the mapped word, return false
+                if (!charToWord.get(patternChar).equals(word)) {
+                    return false;
+                }
+            } else {
+                // Ensure no two characters map to the same word
+                if (mappedWords.contains(word)) {
+                    return false; // Word already mapped to another character
+                }
+                // Add the mapping of the pattern character to the word
+                charToWord.put(patternChar, word);
+                // Add the word to the set of mapped words
+                mappedWords.add(word);
+            }
+        }
+        
+        // If all mappings are consistent, return true
+        return true;
+    }
+}
+
+// Using 1 HashMap
