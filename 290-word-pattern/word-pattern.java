@@ -4,7 +4,7 @@ class Solution {
 
 
 
-// Using 1 HashMap:
+// Using 1 HashMap: single Pass
 
 // Initialize a HashMap to store the mapping of characters to words
         HashMap<Character, String> a = new HashMap<>();
@@ -28,15 +28,20 @@ class Solution {
                 if (!a.get(patternChar).equals(word)) {
                     return false;
                 }
-            } else {
-                // If the word is already mapped to another pattern character, return false
-                if (a.containsValue(word)) {
-                    return false;
+            }
+            else
+            {
+// If the word is already mapped to another pattern character return false
+// the pattern char is not present in map,but the corresponding word is already in map which shows it is mapped with some other character previously. so dont add it.               
+                if(a.containsValue(word))
+                {
+                        return false; 
                 }
-                // Add the mapping of the pattern character to the word
+            }
+                // Add the unique mapping of the pattern character to the word
                 a.put(patternChar, word);
             }
-        }
+        
         
         // If all mappings are consistent, return true
         return true;
