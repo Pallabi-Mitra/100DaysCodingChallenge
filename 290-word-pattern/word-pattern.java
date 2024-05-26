@@ -1,5 +1,53 @@
 class Solution {
-    public boolean wordPattern(String pattern, String s) {
+    public boolean wordPattern(String s, String ss) {
+
+
+
+
+// Using 1 HashMap:
+
+// Initialize a HashMap to store the mapping of characters to words
+        HashMap<Character, String> a = new HashMap<>();
+        
+        // Split the input string `ss` by spaces to get individual words
+        String[] split_string = ss.split(" ", -1);
+        
+        // If the length of the pattern `s` is not equal to the number of words, return false
+        if (s.length() != split_string.length) {
+            return false;
+        }
+        
+        // Iterate through each character in the pattern `s` and the corresponding word in `split_string`
+        for (int i = 0; i < s.length(); i++) {
+            char patternChar = s.charAt(i);
+            String word = split_string[i];
+            
+            // Check if the pattern character already has a mapping
+            if (a.containsKey(patternChar)) {
+                // If the current word does not match the mapped word, return false
+                if (!a.get(patternChar).equals(word)) {
+                    return false;
+                }
+            } else {
+                // If the word is already mapped to another pattern character, return false
+                if (a.containsValue(word)) {
+                    return false;
+                }
+                // Add the mapping of the pattern character to the word
+                a.put(patternChar, word);
+            }
+        }
+        
+        // If all mappings are consistent, return true
+        return true;
+    }
+}
+
+
+
+
+
+
 
 // Using Arrays : 
 
@@ -101,6 +149,7 @@ return false;
 
 
 // Using HashMap and HashSet :
+/*
 
  // Initialize a HashMap to store the mapping of characters to words
         HashMap<Character, String> charToWord = new HashMap<>();
@@ -142,5 +191,4 @@ return false;
         return true;
     }
 }
-
-// Using 1 HashMap
+*/
