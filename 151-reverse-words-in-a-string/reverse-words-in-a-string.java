@@ -5,30 +5,81 @@ class Solution {
 
 //Follow-up: If the string data type is mutable in your language, can you solve it in-place 
 //with O(1) extra space?
+
+// Use Stringbuilder :
+
 // Convert string to char array
-
-     String result = new String();
-    int i = 0;
-    int n = s.length();
-
-    while(i < n){
-        while(i < n && s.charAt(i) == ' ') i++;
-        if(i >= n) break;
-        int j = i + 1;
-        while(j < n && s.charAt(j) != ' ') j++;
-        String sub = s.substring(i, j);
-        if(result.length() == 0) result = sub;
-        else result = sub + " " + result;
-        i = j+1;
+/*
+    if (s == null || s.length() == 0) {
+        return s;
     }
-    return result;
-}
+    s=s.trim();
+
+    // Step 1: Reverse the entire string
+    s = reverse(s, 0, s.length() - 1);
+
+    // Step 2: Reverse each word
+    int start = 0;
+    int end = 0;
+    while (start < s.length()) {
+        // Skip leading spaces
+        while (start < s.length() && s.charAt(start) == ' ') {
+            start++;
+        }
+        end = start;
+        // Find the end of the word
+        while (end < s.length() && s.charAt(end) != ' ') {
+            end++;
+        }
+        // Reverse the word
+        s = reverse(s, start, end - 1);
+        start = end;
+    }
+
+    return s;
 }
 
+private String reverse(String s, int left, int right) {
+    StringBuilder sb = new StringBuilder(s);
+    while (left < right) {
+        char temp = sb.charAt(left);
+        sb.setCharAt(left, sb.charAt(right));
+        sb.setCharAt(right, temp);
+        left++;
+        right--;
+    }
+    return sb.toString();
+}
+}
+*/
 // Stack Solution :
 
+String wordSplit[]=s.trim().split("\\s+");
+
+Stack<String> st = new Stack<>();
+
+for(String word : wordSplit)
+{
+    st.push(word);
+}
+StringBuilder ans = new StringBuilder();
+
+for(int i = 0;i<wordSplit.length-1;i++)
+{
+    String res = st.peek();
+    ans.append(res).append(" ");
+    st.pop();
+
+}
+ans.append(st.pop());
+return ans.toString();
+    
+    }
+}
 
 
+
+// 2 pointer:
 
 //Bruteforce :
 /*
