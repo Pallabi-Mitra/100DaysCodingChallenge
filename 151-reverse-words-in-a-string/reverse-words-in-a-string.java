@@ -8,39 +8,42 @@ class Solution {
 
 // Use Stringbuilder :
 
-// Convert string to char array
-/*
-    if (s == null || s.length() == 0) {
-        return s;
-    }
-    s=s.trim();
-
-    // Step 1: Reverse the entire string
-    s = reverse(s, 0, s.length() - 1);
-
-    // Step 2: Reverse each word
+// Step 1: Trim leading and trailing spaces
+    s = s.trim();
+    
+    // Step 2: Reverse the entire string using StringBuilder
+    StringBuilder sb = new StringBuilder(s).reverse();
+    
+    // Step 3: Reverse each word in the reversed string
     int start = 0;
-    int end = 0;
-    while (start < s.length()) {
-        // Skip leading spaces
-        while (start < s.length() && s.charAt(start) == ' ') {
-            start++;
+    for (int i = 0; i < sb.length(); i++) {
+        if (sb.charAt(i) == ' ') {
+            reverse(sb, start, i - 1);
+            start = i + 1;
         }
-        end = start;
-        // Find the end of the word
-        while (end < s.length() && s.charAt(end) != ' ') {
-            end++;
-        }
-        // Reverse the word
-        s = reverse(s, start, end - 1);
-        start = end;
     }
-
-    return s;
+    // Reverse the last word
+    reverse(sb, start, sb.length() - 1);
+    
+    // Step 4: Clean up multiple spaces
+    int i = 0;
+    while (i < sb.length()) {
+        if (sb.charAt(i) == ' ') {
+            int j = i + 1;
+            while (j < sb.length() && sb.charAt(j) == ' ') {
+                j++;
+            }
+            if (j > i + 1) {
+                sb.delete(i + 1, j);
+            }
+        }
+        i++;
+    }
+    
+    return sb.toString();
 }
 
-private String reverse(String s, int left, int right) {
-    StringBuilder sb = new StringBuilder(s);
+private void reverse(StringBuilder sb, int left, int right) {
     while (left < right) {
         char temp = sb.charAt(left);
         sb.setCharAt(left, sb.charAt(right));
@@ -48,12 +51,11 @@ private String reverse(String s, int left, int right) {
         left++;
         right--;
     }
-    return sb.toString();
 }
 }
-*/
-// Stack Solution :
 
+// Stack Solution :
+/*
 String wordSplit[]=s.trim().split("\\s+");
 
 Stack<String> st = new Stack<>();
@@ -69,6 +71,7 @@ for(int i = 0;i<wordSplit.length-1;i++)
     String res = st.peek();
     ans.append(res).append(" ");
     st.pop();
+    //ans.append(stack.pop()).append(" ");
 
 }
 ans.append(st.pop());
@@ -77,9 +80,13 @@ return ans.toString();
     }
 }
 
-
+*/
 
 // 2 pointer:
+
+
+
+
 
 //Bruteforce :
 /*
