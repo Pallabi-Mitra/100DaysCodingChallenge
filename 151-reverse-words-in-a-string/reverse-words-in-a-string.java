@@ -2,18 +2,61 @@ class Solution {
     public String reverseWords(String s) {
 
 
+// Step 1: Trim leading and trailing spaces
+        s = s.trim();
+        StringBuilder sb = new StringBuilder(s);
+      
+        int n = sb.length();
+        int start = 0;
 
+        // Step 2: Reverse each word in the string
+        for (int end = 0; end < n; end++) {
+            // Skip spaces
+            while (end < n && sb.charAt(end) == ' ') {
+                end++;
+            }
+            // Find the end of the current word
+            while (end < n && sb.charAt(end) != ' ') {
+                end++;
+            }
+            // Reverse the current word
+            reverse(sb, start, end - 1);
+            start = end + 1; // Move to the next word's start position
+        }
+        
+        // Step 3: Reverse the entire StringBuilder to get the final result
+        sb.reverse();
+        
+        // Step 4: Clean up multiple spaces
+        String result = sb.toString().replaceAll("\\s+", " ").trim();
+        
+        return result;
+    }
+
+    // Helper function to reverse a part of the StringBuilder
+    private void reverse(StringBuilder sb, int left, int right) {
+        while (left < right) {
+            char temp = sb.charAt(left);
+            sb.setCharAt(left, sb.charAt(right));
+            sb.setCharAt(right, temp);
+            left++;
+            right--;
+        }
+    }
+
+}
 //Follow-up: If the string data type is mutable in your language, can you solve it in-place 
 //with O(1) extra space?
 
-// Use Stringbuilder :
+// Use Stringbuilder : No extra space used. Only converted to string
+// Function used regex to remove middle, leading & trailing spaces
+// unable to write logic to remove the multiple in betrween spaces
 
+
+/* My code :
 // Step 1: Trim leading and trailing spaces
      s=s.trim();
         StringBuilder sb = new StringBuilder(s);
-      
-       
-       
       
         int n = sb.length();
 
@@ -69,7 +112,7 @@ class Solution {
         }
 
 }
-
+*/
 // Stack Solution :
 /*
 String wordSplit[]=s.trim().split("\\s+");
