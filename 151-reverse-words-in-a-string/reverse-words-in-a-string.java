@@ -9,49 +9,65 @@ class Solution {
 // Use Stringbuilder :
 
 // Step 1: Trim leading and trailing spaces
-    s = s.trim();
-    
-    // Step 2: Reverse the entire string using StringBuilder
-    StringBuilder sb = new StringBuilder(s).reverse();
-    
-    // Step 3: Reverse each word in the reversed string
-    int start = 0;
-    for (int i = 0; i < sb.length(); i++) {
-        if (sb.charAt(i) == ' ') {
-            reverse(sb, start, i - 1);
-            start = i + 1;
-        }
-    }
-    // Reverse the last word
-    reverse(sb, start, sb.length() - 1);
-    
-    // Step 4: Clean up multiple spaces
-    int i = 0;
-    while (i < sb.length()) {
-        if (sb.charAt(i) == ' ') {
-            int j = i + 1;
-            while (j < sb.length() && sb.charAt(j) == ' ') {
-                j++;
-            }
-            if (j > i + 1) {
-                sb.delete(i + 1, j);
-            }
-        }
-        i++;
-    }
-    
-    return sb.toString();
-}
+     s=s.trim();
+        StringBuilder sb = new StringBuilder(s);
+      
+       
+       
+      
+        int n = sb.length();
 
-private void reverse(StringBuilder sb, int left, int right) {
-    while (left < right) {
-        char temp = sb.charAt(left);
-        sb.setCharAt(left, sb.charAt(right));
-        sb.setCharAt(right, temp);
-        left++;
-        right--;
+        int start = 0;
+       
+
+        for(int end=0;end<n;end++)
+        {
+            while(end < n && sb.charAt(end)==' ')
+            {
+                end++;
+            }
+            while(end < n && sb.charAt(end)!=' ')
+            {
+                end++;
+            }
+
+           reverse(sb,start,end-1);
+
+           while(end<n && sb.charAt(end+1)==' ')
+
+           {
+             
+             end++;
+           }
+
+           //StringBuilder replace(int start, int end, String str): 
+            start=end+1;
+           // end= start;
+
+            
+        }
+        sb= sb.reverse();
+        String result =sb.toString();
+        result = result.replaceAll("[ ]+"," ");
+        
+        return result;
+
     }
-}
+
+        private void reverse(StringBuilder sb,int left,int right)
+        {
+            
+            while(left<right)
+            {
+                char temp = sb.charAt(left);
+                sb.setCharAt(left,sb.charAt(right));
+                sb.setCharAt(right, temp);
+                left++;
+                right--;
+            }
+            //return right;
+        }
+
 }
 
 // Stack Solution :
