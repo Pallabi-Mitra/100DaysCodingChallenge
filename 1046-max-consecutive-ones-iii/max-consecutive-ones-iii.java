@@ -2,8 +2,45 @@ class Solution {
     public int longestOnes(int[] nums, int k) {
 
 
-// Sliding Window  : 
+// Sliding Window Optimized  : 
 
+
+    int n = nums.length;
+
+    int left = 0;
+    int right = 0;
+    int zeroes = 0;
+    int maxlen = 0;
+
+    while(right< n)
+    {
+        if(nums[right]==0)
+        {
+            zeroes++;
+
+        }
+
+        if(zeroes > k)
+        {
+            if(nums[left]==0)
+            {
+                zeroes --;
+            }
+            left++;
+        }
+        maxlen = Math.max(maxlen,right-left+1);
+        right++;
+    }
+
+return maxlen;
+    }
+}
+
+
+
+
+
+// Sliding Window  : 
 /*
         int zeroes = 0;
             int right = 0;
@@ -35,6 +72,7 @@ class Solution {
 
 
             // Bruteforce :
+            /*
             int n = nums.length;
             int maxlen = 0;
             
@@ -55,5 +93,6 @@ class Solution {
                 
             }
             return maxlen;
-    }
-}
+            */
+
+ 
