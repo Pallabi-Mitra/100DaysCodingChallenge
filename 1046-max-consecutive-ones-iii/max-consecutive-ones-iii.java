@@ -28,6 +28,7 @@ class Solution {
             }
             left++;
         }
+        if(zeroes <=k)
         maxlen = Math.max(maxlen,right-left+1);
         right++;
     }
