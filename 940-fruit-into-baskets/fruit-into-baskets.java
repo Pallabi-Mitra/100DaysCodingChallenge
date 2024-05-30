@@ -1,8 +1,51 @@
 class Solution {
     public int totalFruit(int[] fruits) {
 
-// Sliding Window Better :
 
+
+
+
+// Optimized Sliding Window : O(n)
+
+
+
+
+
+    int left = 0;
+    int right = 0;
+    int maxlen = 0;
+    int n = fruits.length;
+    HashMap<Integer,Integer> mpp = new HashMap<>();
+
+    while(right < n)
+    {
+
+        mpp.put(fruits[right], mpp.getOrDefault(fruits[right],0)+1);
+
+        if(mpp.size()>2)
+        {
+            mpp.put(fruits[left],mpp.get(fruits[left])-1);
+            
+            if(mpp.get(fruits[left])==0)
+            mpp.remove(fruits[left]);
+
+            left++;
+        }
+        if(mpp.size()<=2)
+            {
+                maxlen = Math.max(maxlen,right-left+1);
+            }
+        
+
+        
+        right++;
+
+    }
+    return maxlen;
+    }
+}
+// Sliding Window Better : O(2n)
+/*
 
     int left = 0;
     int right = 0;
@@ -44,25 +87,7 @@ class Solution {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 
 // Bruteforce : o(n2)
 /*
