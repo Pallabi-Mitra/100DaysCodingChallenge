@@ -3,7 +3,7 @@ class Solution {
 
 // Sliding Window :
 
-
+/*
     return atMost(nums, S) - atMost(nums, S - 1);
 }
 
@@ -21,7 +21,39 @@ private int atMost(int[] nums, int S) {
     return count; // Return the count of subarrays with sum at most S
 }
 }
+*/
 
+// Initialize count of subarrays with sum at most S
+    int count = 0;
+    
+    // Initialize pointers and sums for S and S - 1
+    int left1 = 0, sum1 = 0; // Pointers and sum for S
+    int left2 = 0, sum2 = 0; // Pointers and sum for S - 1
+
+    // Iterate through the array using the right pointer
+    for (int right = 0; right < nums.length; right++) {
+        // Update sum1 and sum2 by adding the current element
+        sum1 += nums[right];
+        sum2 += nums[right];
+
+        // Shrink the window for S until the sum is less than or equal to S
+        while (sum1 > S) {
+            sum1 -= nums[left1++];
+        }
+
+        // Shrink the window for S - 1 until the sum is less than S
+        while (left2 <= right && sum2 >= S) {
+            sum2 -= nums[left2++];
+        }
+
+        // Add the count of subarrays with sum exactly equal to S
+        count += left2 - left1;
+    }
+
+    // Return the total count of subarrays with sum exactly equal to S
+    return count;
+}
+}
 
   // Hashing : 
 
