@@ -1,9 +1,10 @@
 class Solution {
+   
     public int numSubarraysWithSum(int[] nums, int S) {
 
 // Sliding Window :
 
-/*
+
     return atMost(nums, S) - atMost(nums, S - 1);
 }
 
@@ -21,8 +22,11 @@ private int atMost(int[] nums, int S) {
     return count; // Return the count of subarrays with sum at most S
 }
 }
-*/
 
+
+
+
+/* 
 // Initialize count of subarrays with sum at most S
     int count = 0;
     
@@ -54,6 +58,10 @@ private int atMost(int[] nums, int S) {
     return count;
 }
 }
+*/
+
+
+
 
   // Hashing : 
 
@@ -86,6 +94,9 @@ private int atMost(int[] nums, int S) {
     }
 }
   */
+
+
+  
         // Bruteforce : O(n^2):
         /*
 
