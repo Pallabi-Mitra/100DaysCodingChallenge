@@ -1,6 +1,10 @@
 class Solution {
-    public int subarraySum(int[] nums, int k) {
-         int sum = 0;
+
+ public int subarraySum(int[] nums, int k) {
+  
+
+  // For both negative & positive :
+   int sum = 0;
         int ans = 0;
         HashMap<Integer,Integer> map = new HashMap<>();
         map.put(0,1);
@@ -14,6 +18,42 @@ class Solution {
         return ans;
     }
 }
+  // To count for positive arrays : //
+  /* 
+  
+    int i=0,j=0;
+        int n = nums.length;
+        long sum=0;
+        int len=0;
+        int c =0;
+
+       for(i=0;i<n;i++)
+        {
+            
+            sum+=nums[i];
+
+            while(sum>k && i!=0)
+            {
+                sum-=nums[j];
+                j++;
+               
+            }
+            if(sum==k)
+            {
+                //len=Math.max(len,i-j+1);
+               
+                c ++;
+            }
+        }
+
+            return c;
+}
+}
+*/
+/*
+   
+        
+*/
 /*
         int n = arr.length; // size of the given array.
         Map mpp = new HashMap();
@@ -58,7 +98,7 @@ for(int i = 0;i<n;i++)
 }
 
     return c;
-
+*/
 //bruteforce : O(N2)
 /*
         int n = nums.length;
