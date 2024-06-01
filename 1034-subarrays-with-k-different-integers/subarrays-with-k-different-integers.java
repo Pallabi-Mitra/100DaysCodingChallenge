@@ -37,9 +37,9 @@ HashMap<Integer,Integer> mpp = new HashMap<>();
           //  count++;
 // if larger subarray is valid, all sub parts will be valid too
 // if segment is valid calculate the subarrays count
-if(mpp.size()<=k){
+//if(mpp.size()<=k){
           count += right - left + 1;
-}
+
         
 
         right++;
