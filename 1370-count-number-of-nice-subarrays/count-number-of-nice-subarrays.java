@@ -4,39 +4,35 @@ class Solution {
 
 // Sliding Window :
 
-/*
- int n = nums.length;
-        int subarray = 0;
-        int count = 0;
-        int right = 0;
-        int left = 0;
 
-        while(right < n)
-        {
-            if(nums[right]%2!=0)
-            {
-                count ++;
-            }
+ int count = 0; // Initialize the result count
+    int left = 0; // Left pointer of the sliding window
+    int oddCount = 0; // Count of odd numbers in the current window
+    int[] prefix = new int[nums.length + 1]; // Array to store prefix counts of odd numbers
+    prefix[0] = 1; // Initialize prefix for zero odd numbers
 
-            if(count > k)
-            {
-                if(nums[left]%2!=0)
-                {
-                    count--;
-                }
-                left++;
-            }
-
-            if(count ==k)
-            subarray++;
-
-            right++;
+    // Iterate through the array with the right pointer
+    for (int right = 0; right < nums.length; right++) {
+        // Increment oddCount if the current number is odd
+        if (nums[right] % 2 != 0) {
+            oddCount++;
         }
-
-return subarray;
+        // If we have at least k odd numbers, add the count of subarrays with exactly k odd numbers
+        if (oddCount >= k) {
+            count += prefix[oddCount - k];
+        }
+        // Update the prefix array for the current count of odd numbers
+        prefix[oddCount]++;
     }
+    return count; // Return the total count of nice subarrays
 }
-*/
+}
+
+
+
+
+
+
 // Hashing :
 
 /*
@@ -82,7 +78,7 @@ return result;
         // Consider all even number as 0, and odd number as 1
         // Same as finding the sum in the problem Binary subarrays with sum
 
-
+/*
 
        
     return atMost(nums, k) - atMost(nums, k - 1);
@@ -107,12 +103,7 @@ private int atMost(int[] nums, int k) {
 }
 }
 
-
-
-
-
-
-
+*/
 
 
 
