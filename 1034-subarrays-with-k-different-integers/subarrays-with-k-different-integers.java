@@ -20,8 +20,8 @@ HashMap<Integer,Integer> mpp = new HashMap<>();
         mpp.put(nums[right],mpp.getOrDefault(nums[right],0)+1);
 
        
-
-        while(mpp.size()>k)
+// no if bcoz its not maxlen, its count of subarrays we need while or else we will miss out on new elements
+        while(mpp.size()>k) 
         {
 
             mpp.put(nums[left],mpp.get(nums[left])-1);
