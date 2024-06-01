@@ -1,8 +1,40 @@
 class Solution {
     public int numberOfSubstrings(String s) {
 
-//Hashing:
 
+// Optimized Sliding Window :
+
+
+int lastSeen[]=new int[3];
+Arrays.fill(lastSeen,-1);
+// int lastSeen[]={-1,-1,-1};
+int n = s.length();
+int count = 0;
+
+for(int i = 0;i<n;i++)
+{
+        lastSeen[s.charAt(i)-'a']=i; // add index of the last seen position of the characters
+
+        if(lastSeen[0]!= -1 && lastSeen[1]!= -1 && lastSeen[2]!= -1 ) // all 3 characters are present
+        {
+            // no of subarrays 
+            count = count + 1+ Math.min(Math.min(lastSeen[0],lastSeen[1]),lastSeen[2]);
+        } 
+}
+return count;
+    }
+}
+
+
+
+
+
+
+
+
+
+//Hashing:
+/*
  int[] count = new int[3]; // count[0] for 'a', count[1] for 'b', count[2] for 'c'
         int left = 0;
         int result = 0;
@@ -22,7 +54,7 @@ class Solution {
         return result;
     }
 }
-
+*/
 
 // Optimized Bruteforce :
 /*
