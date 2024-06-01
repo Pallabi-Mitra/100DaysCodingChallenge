@@ -42,7 +42,7 @@ class Solution {
     }
 }
 */
-
+/*
 // Initialize variables for the sliding window
         int left = 0; // Left pointer for the sliding window
         int n = nums.length; // Length of the input array
@@ -67,5 +67,29 @@ class Solution {
         }
 
         return result; // Return the maximum average
+
+*/
+
+          int n = nums.length; // Length of the input array
+        int sum = 0; // Sum of the first window of size k
+
+        // Calculate the sum of the first window
+        for (int i = 0; i < k; i++) {
+            sum += nums[i];
+        }
+
+        // Initialize maxSum to the sum of the first window
+        int maxSum = sum;
+
+        // Slide the window from k to the end of the array
+        for (int i = k; i < n; i++) {
+            // Subtract the element that is leaving the window and add the element that is entering the window
+            sum = sum - nums[i - k] + nums[i];
+            // Update maxSum if the new sum is greater
+            maxSum = Math.max(maxSum, sum);
+        }
+
+        // Calculate and return the maximum average
+        return (double) maxSum / k;
     }
 }
