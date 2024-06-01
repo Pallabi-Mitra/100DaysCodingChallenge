@@ -5,9 +5,9 @@ class Solution {
 // Optimized Sliding Window :
 
 
-int lastSeen[]=new int[3];
-Arrays.fill(lastSeen,-1);
-// int lastSeen[]={-1,-1,-1};
+//int lastSeen[]=new int[3];
+//Arrays.fill(lastSeen,-1);
+ int lastSeen[]={-1,-1,-1};
 int n = s.length();
 int count = 0;
 
