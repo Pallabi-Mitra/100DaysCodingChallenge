@@ -12,11 +12,7 @@ class Solution {
     }
     index_s++;// Always move pointer of s
    }
-// If t is already a subsequence of s all characters present
-   if(index_t==t.length())
-   {
-    return 0;
-   }
+
 // Characters left in t that are not matched will be appended
     return t.length() - index_t;
 
