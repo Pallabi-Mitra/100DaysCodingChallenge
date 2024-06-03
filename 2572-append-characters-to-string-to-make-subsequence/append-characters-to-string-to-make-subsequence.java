@@ -1,7 +1,7 @@
 class Solution {
     public int appendCharacters(String s, String t) {
 
-
+/*
    int index_s = 0; // Pointer for String s
    int index_t = 0; // Pointer for String t
 
@@ -17,5 +17,24 @@ class Solution {
     return t.length() - index_t;
 
         
+    }
+}
+*/
+  if(s.equals(t))
+            return 0;
+        char chS[] = s.toCharArray();
+        char chT[] = t.toCharArray();
+
+        int j = 0;
+        int m = chS.length, n = chT.length;
+        for(int i = 0; i < m; i++)
+        {
+            if(chS[i] == chT[j])
+                j++;
+            
+            if(j == n)
+                return 0;
+        }
+        return n - j;
     }
 }
