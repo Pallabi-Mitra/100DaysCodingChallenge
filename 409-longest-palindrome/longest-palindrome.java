@@ -29,7 +29,7 @@ for(int n : count)
     {
         res +=n;
     }
-    else if(n%2==1) // odd numbers greater than 1
+    else if (n%2==1) // odd numbers greater than 1
     {
         res+=n-1; // take the even pair out , eg : 5 -> 5-1 = 4 chars can be taken
         odd =1; // no of odd will be 1 no matter how many present
