@@ -5,6 +5,12 @@ class Solution {
 
 // Most optimal :
 
+// Intuition : 
+
+// even no :  take all the counts
+// odd no : whatever even no till we can get we will add.
+// for other remaining each count 1 of odd char we can take only 1 to make valid pallindrome
+// so odd = 1 set static
 
 int count[]=new int[58];
 // ch -'A' // if lower case : 97-65 = 32 --- 58
@@ -23,15 +29,12 @@ for(int n : count)
     {
         res +=n;
     }
-    else if(n%2==1 && n !=1) // odd numbers greater than 1
+    else if(n%2==1) // odd numbers greater than 1
     {
         res+=n-1; // take the even pair out , eg : 5 -> 5-1 = 4 chars can be taken
         odd =1; // no of odd will be 1 no matter how many present
     }
-    else if(n==1)
-    {
-        odd=1; // if only 1 char is present we can take it once, 
-    }
+    
 }
 
 
