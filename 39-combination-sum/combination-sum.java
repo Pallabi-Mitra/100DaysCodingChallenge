@@ -13,8 +13,7 @@ class Solution {
     {
         if(i==nums.length)
         {
-            if(target==0)
-        {
+           if(target==0){
             ans.add(new ArrayList<>(al));
         }
         
@@ -22,7 +21,7 @@ class Solution {
         }
     
 
-    if(nums[i]<=target)
+    if(nums[i]<=target) // &&nums[i]!=0 ---> to avoid 0 for infinite loop
     {
         // pick condition : take current index
 
@@ -36,6 +35,7 @@ class Solution {
     }
 
     // not pick current index : check next index
+    // not picking anything so target doesnt change
     findCombinations(i+1,nums,target,ans,al);
 
 
