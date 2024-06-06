@@ -4,7 +4,8 @@ class Solution {
 
         // Optimal :
 
-// cannot take repeated elements :
+// cannot take repeated elements in one set always consecutive per sets:
+// in place correction
 
 
 
@@ -14,17 +15,17 @@ class Solution {
 
         
 
-        for(int i = 0;i<n;i++)
+        for(int i = 0;i<n;i++) // check for all array elemnts
         {
-           if(nums[i]>0)
+           if(nums[i]>0) // if the no is -1 that is already taken in a set
            {
-            if(!findNext(nums,k,i,n))
+            if(!findNext(nums,k,i,n)) // if returns false cannot form set
             return false;
            
            }
         }
 
-        return true;
+        return true; // if never false encountered, it is true
         
     }
 
@@ -33,24 +34,24 @@ class Solution {
            
            
             int search = nums[i]+1; // consecutive no needs to be searched
-            nums[i]=-1;
-            i+=1;
-            int count = 1;
+            nums[i]=-1; // set the current no as -1 in array
+            i+=1; // move to next
+            int count = 1; // to track the group size
 
-            while(i < n && count < k)
+            while(i < n && count < k) // till group size
             {
-                if(nums[i]==search)
+                if(nums[i]==search) // if match found
                 {
-                    search = nums[i]+1;
-                    nums[i]=-1;
+                    search = nums[i]+1; // move to next consecutive element search till group size not formed
+                    nums[i]=-1; // set the current as -1
                     count++;
                 }
-                i++;
+                i++; //  check next element
             }
 
-            if( count!=k) // matching consecutive elemnets not found
+            if( count!=k) // if all matching consecutive elemnets counting to group size not found
             return false;
-            else
+            else // group size matching consecutives found
             return true;
     }
 }
