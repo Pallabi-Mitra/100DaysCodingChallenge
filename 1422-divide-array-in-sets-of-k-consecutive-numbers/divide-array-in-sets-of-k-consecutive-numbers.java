@@ -2,6 +2,44 @@ class Solution {
     public boolean isPossibleDivide(int[] nums, int k) {
 
 
+
+
+    // Edge case: if the array length is not a multiple of k, return false
+        if (nums.length % k != 0) {
+            return false;
+        }
+
+        // Sort the array
+        Arrays.sort(nums);
+
+        // Frequency map to count occurrences of each number
+        Map<Integer, Integer> countMap = new HashMap<>();
+        for (int num : nums) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        // Try to form sets of k consecutive numbers
+        for (int num : nums) {
+            if (countMap.get(num) == 0) {
+                continue; // This number has already been used in a previous set
+            }
+
+            // Attempt to create a sequence of k consecutive numbers starting from 'num'
+            for (int i = 0; i < k; i++) {
+                int current = num + i;
+                if (countMap.getOrDefault(current, 0) == 0) {
+                    return false; // If any number in the sequence is missing, return false
+                }
+                countMap.put(current, countMap.get(current) - 1);
+            }
+        }
+
+        return true;
+    }
+}
+
+
+/*
         // Optimal :
 
 // cannot take repeated elements in one set always consecutive per sets:
@@ -55,3 +93,5 @@ class Solution {
             return true;
     }
 }
+
+*/
