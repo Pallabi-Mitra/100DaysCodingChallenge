@@ -1,6 +1,6 @@
 class Solution {
     public List<List<Integer>> subsetsWithDup(int[] nums) {
-/*
+
 
        Arrays.sort(nums);
         List<List<Integer>> ans = new ArrayList<>();
@@ -22,7 +22,6 @@ class Solution {
             }
     }
 }
-*/
 
 
 
@@ -31,6 +30,7 @@ class Solution {
 
 
 
+/*
 
        // Define the actual recursive function method :
         Arrays.sort(nums);
@@ -68,3 +68,4 @@ class Solution {
     
 }
 
+*/
