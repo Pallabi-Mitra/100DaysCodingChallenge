@@ -1,7 +1,7 @@
 class Solution {
     public boolean isNStraightHand(int[] hand, int groupSize) {
 
-    if (hand.length % groupSize != 0) return false;
+   if (hand.length % groupSize != 0) return false;
 
     // Use a TreeMap to count the occurrences of each card
     TreeMap<Integer, Integer> count = new TreeMap<>();
@@ -24,7 +24,6 @@ class Solution {
         }
     }
     return true;
-        
         
     }
 }
