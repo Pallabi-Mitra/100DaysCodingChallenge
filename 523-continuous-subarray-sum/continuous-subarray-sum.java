@@ -1,7 +1,21 @@
 class Solution {
     public boolean checkSubarraySum(int[] nums, int k) {
         
+/*
 
+
+if s2 % k == s1 % k
+then every number in between must be a sum divisible by k completely
+so we can return true
+
+
+Using map to store the modulos of every prefix sum
+when two modulos matches we know we have sum multiple of K between them, if size is motre than 2 we return true
+
+
+
+
+*/
       //Bruteforce :
       /*  
              int n = nums.length;
