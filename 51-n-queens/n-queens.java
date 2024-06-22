@@ -12,7 +12,7 @@ class Solution {
             }
         }
         
-        // Start the backtracking process from the first row
+        // Start the backtracking process from the first column
         backtrack(result, board, 0);
         
         // Return all solutions found
@@ -20,9 +20,9 @@ class Solution {
     }
 
     // Backtracking method to find all solutions
-    private void backtrack(List<List<String>> result, char[][] board, int row) {
-        // If all rows are processed, add the current board configuration to the result
-        if (row == board.length) {
+    private void backtrack(List<List<String>> result, char[][] board, int col) {
+        // If all columns are processed, add the current board configuration to the result
+        if (col == board.length) {
             // Convert the board configuration to List<String> and add to the result
             List<String> currentBoard = new ArrayList<>();
             for (char[] r : board) {
@@ -32,15 +32,15 @@ class Solution {
             return;
         }
         
-        // Try placing queen in each column of the current row
-        for (int col = 0; col < board.length; col++) {
+        // Try placing queen in each row of the current column
+        for (int row = 0; row < board.length; row++) {
             // Check if it's valid to place a queen at board[row][col]
             if (isValid(board, row, col)) {
                 // Place the queen
                 board[row][col] = 'Q';
-                // Recur to the next row
-                backtrack(result, board, row + 1);
-                // Backtrack: Remove the queen and try the next column
+                // Recur to the next column
+                backtrack(result, board, col + 1);
+                // Backtrack: Remove the queen and try the next row
                 board[row][col] = '.';
             }
         }
@@ -48,9 +48,11 @@ class Solution {
 
     // Helper method to check if it's valid to place a queen at board[row][col]
     private boolean isValid(char[][] board, int row, int col) {
-        // Check the column upwards
-        for (int i = 0; i < row; i++) {
-            if (board[i][col] == 'Q') {
+        int n = board.length;
+        
+        // Check the current row
+        for (int j = 0; j < col; j++) {
+            if (board[row][j] == 'Q') {
                 return false;
             }
         }
@@ -62,8 +64,8 @@ class Solution {
             }
         }
         
-        // Check the upper-right diagonal
-        for (int i = row - 1, j = col + 1; i >= 0 && j < board.length; i--, j++) {
+        // Check the lower-left diagonal
+        for (int i = row + 1, j = col - 1; i < n && j >= 0; i++, j--) {
             if (board[i][j] == 'Q') {
                 return false;
             }
