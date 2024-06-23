@@ -1,5 +1,78 @@
 class Solution {
     public List<List<String>> solveNQueens(int n) {
+
+
+
+        // Initialize a list to store all solutions
+        List<List<String>> result = new ArrayList<>();
+        // Initialize the board with empty spaces
+        char[][] board = new char[n][n];
+        
+        // Initialize the board with empty spaces ('.')
+        for (int i = 0; i < n; i++) {
+            Arrays.fill(board[i], '.');
+        }
+        
+        // Arrays to track availability of rows and diagonals
+        int[] leftRow = new int[n]; // Tracks rows
+        int[] lowerDiagonal = new int[2 * n - 1]; // Tracks lower diagonals
+        int[] upperDiagonal = new int[2 * n - 1]; // Tracks upper diagonals
+        
+        // Start the backtracking process from the first column
+        backtrack(result, board, 0, leftRow, lowerDiagonal, upperDiagonal);
+        
+        // Return all solutions found
+        return result;
+    }
+    
+    // Backtracking method to find all solutions
+    private void backtrack(List<List<String>> result, char[][] board, int col,
+                           int[] leftRow, int[] lowerDiagonal, int[] upperDiagonal) {
+        int n = board.length;
+        // Base case: if all columns are processed, add the current board configuration to the result
+        if (col == n) {
+            // Convert the board configuration to List<String> and add to the result
+            List<String> currentBoard = new ArrayList<>();
+            for (char[] row : board) {
+                currentBoard.add(new String(row));
+            }
+            result.add(currentBoard);
+            return;
+        }
+        
+        // Try placing queen in each row of the current column
+        for (int row = 0; row < n; row++) {
+            // Check if it's valid to place a queen at board[row][col]
+            if (leftRow[row] == 0 && lowerDiagonal[row + col] == 0 && upperDiagonal[n - 1 + col - row] == 0) {
+                // Place the queen
+                board[row][col] = 'Q';
+                // Update the arrays to mark rows and diagonals as under attack
+                leftRow[row] = 1;
+                lowerDiagonal[row + col] = 1;
+                upperDiagonal[n - 1 + col - row] = 1;
+                
+                // Recur to the next column
+                backtrack(result, board, col + 1, leftRow, lowerDiagonal, upperDiagonal);
+                
+                // Backtrack: Remove the queen and restore the previous state
+                board[row][col] = '.';
+                leftRow[row] = 0;
+                lowerDiagonal[row + col] = 0;
+                upperDiagonal[n - 1 + col - row] = 0;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+        //  Brute force O(n) searching for placing queen safe or not
+
+        /*
         // Initialize a list to store all solutions
         List<List<String>> result = new ArrayList<>();
         // Initialize the board with empty spaces
@@ -73,5 +146,9 @@ class Solution {
         
         // If no conflicts found, it's valid to place the queen
         return true;
-    }
+
+       }
 }
+
+        */
+ 
