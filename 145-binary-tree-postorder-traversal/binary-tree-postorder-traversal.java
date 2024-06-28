@@ -14,6 +14,54 @@
  * }
  */
 
+ // Using 1 stack : 
+
+
+    class Solution {
+
+        public List<Integer> postorderTraversal(TreeNode root) {
+    // List to store the postorder traversal
+    List<Integer> result = new ArrayList<>();
+    
+    // Check if the root is null
+    if (root == null) {
+        return result;
+    }
+    
+    // Stack to store the nodes for processing
+    Stack<TreeNode> stack = new Stack<>();
+    
+    // Push the root node to the stack
+    stack.push(root);
+    
+    // Loop while the stack is not empty
+    while (!stack.isEmpty()) {
+        // Pop a node from the stack
+        TreeNode node = stack.pop();
+        
+        // Add the node's value to the result list
+        result.add(node.val);
+        
+        // Push the left child to the stack if it exists
+        if (node.left != null) {
+            stack.push(node.left);
+        }
+        
+        // Push the right child to the stack if it exists
+        if (node.right != null) {
+            stack.push(node.right);
+        }
+    }
+    
+    // Reverse the result list to get the postorder traversal
+    Collections.reverse(result);
+    
+    return result;
+    }
+    }
+
+ /*
+
 // Using 2 stacks - Iterative Solution TC : o(n)
 
 class Solution {
@@ -52,7 +100,7 @@ class Solution {
     }
 }
 
-
+*/
 
  // Using Recursion :
 
