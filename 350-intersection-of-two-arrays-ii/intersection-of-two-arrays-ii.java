@@ -2,6 +2,35 @@ class Solution {
     public int[] intersect(int[] nums1, int[] nums2) {
 
 
+// HashMap
+
+        // Step 1: Create a frequency map for nums1
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums1) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        
+        // Step 2: Find intersection using nums2
+        List<Integer> result = new ArrayList<>();
+        for (int num : nums2) {
+            if (map.containsKey(num) && map.get(num) > 0) {
+                result.add(num);
+                map.put(num, map.get(num) - 1);
+            }
+        }
+        
+        // Step 3: Convert list to array
+        int[] intersection = new int[result.size()];
+        for (int i = 0; i < result.size(); i++) {
+            intersection[i] = result.get(i);
+        }
+        
+        // Step 4: Return the intersection array
+        return intersection;
+    }
+}
+// better :
+/*
 
         // Step 1: Sort both input arrays
         Arrays.sort(nums1);
@@ -37,7 +66,7 @@ class Solution {
         return intersection;
     }
 }
-
+*/
 // Brute force :
 /*
         ArrayList<Integer> al = new ArrayList<>();
