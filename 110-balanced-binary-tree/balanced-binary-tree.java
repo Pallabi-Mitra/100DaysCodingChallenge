@@ -27,12 +27,12 @@ class Solution {
         // Height of left subtree...
 		int leftHeight = Height(root.left);
         // Height of height subtree...
-		int rightHight = Height(root.right);
+		int rightHeight = Height(root.right);
         // In case of left subtree or right subtree unbalanced, return -1...
-		if (leftHeight == -1 || rightHight == -1)  return -1;
+		if (leftHeight == -1 || rightHeight == -1)  return -1;
         // If their heights differ by more than ‘1’, return -1...
-        if (Math.abs(leftHeight - rightHight) > 1)  return -1;
+        if (Math.abs(leftHeight - rightHeight) > 1)  return -1;
         // Otherwise, return the height of this subtree as max(leftHeight, rightHight) + 1...
-		return Math.max(leftHeight, rightHight) + 1;
+		return Math.max(leftHeight, rightHeight) + 1;
     }
 }
