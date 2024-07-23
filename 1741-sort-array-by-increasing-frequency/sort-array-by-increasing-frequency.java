@@ -58,7 +58,7 @@ class Solution {
             if (freqA != freqB) {
                 return Integer.compare(freqA, freqB); // Sort by frequency
             } else {
-                return Integer.compare(b, a); // Sort by value in decreasing order
+                return Integer.compare(b, a); // If frequencies are same, Sort by value in decreasing order
             }
         });
 
