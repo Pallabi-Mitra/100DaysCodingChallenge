@@ -1,5 +1,29 @@
-// Using Two Pass Greedy Algorithm:
+// min- max balance
 
+
+class Solution{
+public boolean checkValidString(String s) {
+    int minBalance = 0, maxBalance = 0;
+    for (char c : s.toCharArray()) {
+        if (c == '(') {
+            minBalance++;
+            maxBalance++;
+        } else if (c == ')') {
+            minBalance = Math.max(minBalance - 1, 0);
+            maxBalance--;
+        } else { // '*'
+            minBalance = Math.max(minBalance - 1, 0);
+            maxBalance++;
+        }
+        if (maxBalance < 0) return false;
+    }
+    return minBalance == 0;
+}
+}
+
+
+// Using Two Pass Greedy Algorithm:
+/*
 
 class Solution{
 public boolean checkValidString(String s) {
@@ -21,6 +45,14 @@ public boolean checkValidString(String s) {
     return true;
 }
 }
+*/
+
+/*
+Explanation
+Left to Right Pass: Ensures that the string can be valid considering each '*' as '('.
+Right to Left Pass: Ensures that the string can be valid considering each '*' as ')'.
+
+*/
 
 
 
