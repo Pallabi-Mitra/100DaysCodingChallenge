@@ -1,3 +1,6 @@
+
+// ask first if the intervals given are in sorted or not : 
+
 class Solution {
     public int[][] merge(int[][] arr) {
         
