@@ -39,7 +39,7 @@ class Solution {
     Integer event2_0 = Integer.parseInt(event2[0].replace(":", ""));
     Integer event2_1 = Integer.parseInt(event2[1].replace(":", ""));
     
-    if (event2_1 < event1_0) return false;
+   if (event2_1 < event1_0) return false;
     if (event1_1 >= event2_0) return true;
     
     return false;
