@@ -38,9 +38,18 @@ class Solution {
     Integer event1_1 = Integer.valueOf(event1[1].replace(":", ""));
     Integer event2_0 = Integer.parseInt(event2[0].replace(":", ""));
     Integer event2_1 = Integer.parseInt(event2[1].replace(":", ""));
-    
-   if (event2_1 < event1_0) return false;
+
+   // event 1 starts later than event 2 ends
+   // event 2 ends earlier, event 1 starts later ---> no conflict 
+    // any other case no conflict
+
+
+    if (event2_1 < event1_0) return false;
+    // conflict :
+
+    // event1 end time is more than event 2 start time--> conflict
     if (event1_1 >= event2_0) return true;
+    
     
     return false;
     }
