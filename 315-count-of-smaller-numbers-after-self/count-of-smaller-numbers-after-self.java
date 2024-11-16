@@ -1,31 +1,30 @@
 
 class Solution {
     public List<Integer> countSmaller(int[] nums) {
-        List<Integer> result = new ArrayList<>();
-        List<Integer> sortedList = new ArrayList<>();
 
+        List<Integer> counts = new ArrayList<>();
+        List<Integer> sorted = new ArrayList<>();
+        
         for (int i = nums.length - 1; i >= 0; i--) {
-            int num = nums[i];
-            int idx = bisectLeft(sortedList, num);
-            result.add(idx);
-            sortedList.add(idx, num);
+            int pos = findInsertPosition(sorted, nums[i]);
+            counts.add(pos);
+            sorted.add(pos, nums[i]);
         }
-
-        Collections.reverse(result);  // The result needs to be reversed
-        return result;
+        
+        Collections.reverse(counts);
+        return counts;
     }
-
-    private int bisectLeft(List<Integer> container, int insertVal) {
-        int l = 0;
-        int r = container.size()-1;
-        while (l <= r) {
-            int mid = (l + r) / 2;
-            if (container.get(mid) < insertVal) {
-                l = mid + 1;
+    
+    private int findInsertPosition(List<Integer> sorted, int target) {
+        int left = 0, right = sorted.size();
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (sorted.get(mid) >= target) {
+                right = mid;
             } else {
-                r = mid-1;
+                left = mid + 1;
             }
         }
-        return l;
+        return left;
     }
 }
