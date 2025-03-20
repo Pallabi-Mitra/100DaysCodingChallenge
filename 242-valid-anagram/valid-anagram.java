@@ -6,7 +6,7 @@ class Solution {
 // TC : O(n log n) - sorting
 // SC : O(n) - For arrays
 
-
+/*
     char ch1[]= s.toCharArray();
 
     char ch2[]= t.toCharArray();
@@ -31,5 +31,40 @@ class Solution {
 
 
         
+    }
+}
+*/
+//Optimal appraoch :
+
+// TC : O(n)
+// SC : O(1)
+
+int alpha[]=new int[26];
+
+if (s.length()!=t.length())
+    return false;
+
+
+for(int i=0;i<s.length();i++)
+{
+    alpha[s.charAt(i)-'a']++;
+}
+
+for(int i=0;i<t.length();i++)
+{
+    alpha[t.charAt(i)-'a']--;
+}
+
+for(int i =0;i<alpha.length;i++)
+{
+    if(alpha[i]!=0)
+    {
+        return false;
+    }
+
+
+}
+
+return true;
     }
 }
