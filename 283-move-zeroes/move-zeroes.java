@@ -4,6 +4,9 @@ class Solution {
 
         // Bruteforce :
 
+        //TC: O(n)
+        //SC: O(n)
+
         int n = nums.length;
         int arr[]= new int[n];
         int noOfZero =0;
