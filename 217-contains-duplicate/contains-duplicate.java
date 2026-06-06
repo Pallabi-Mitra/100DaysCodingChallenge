@@ -1,8 +1,8 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
 
-        int count = 0;
-        //HashMap<Integer,Integer> mpp = new HashMap<>();
+        /*
+        
 
         HashSet<Integer> st = new HashSet<>();
         int n = nums.length;
@@ -20,6 +20,25 @@ class Solution {
 
         else
         return false;
+*/
+// Using HashMap and keeping counts
+
+    HashMap<Integer,Integer> countMap = new HashMap<>();
+
+    for(int num : nums)
+    {
+        int count = countMap.getOrDefault(num,0)+1;
+
+        if(count > 1)
+            return true;
+    
+    
+
+    countMap.put(num,count);
+    }
+
+    return false;
+
         
     }
 }
